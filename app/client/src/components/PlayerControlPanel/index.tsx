@@ -112,7 +112,7 @@ function PlayerControlPanel(props: PlayerControlPanelProps) {
               <Button
                 minimal
                 onClick={() => {
-                  window.open('https://www.deskreen.com', '_blank');
+                  window.open('https://github.com/rozsazoltan/deskreen', '_blank');
                 }}
               >
                 <Row middle="xs" style={{ opacity: '0.75' }}>

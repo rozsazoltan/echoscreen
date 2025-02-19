@@ -174,7 +174,7 @@ export default function SettingsOverlay(props: SettingsOverlayProps) {
             {`${t('Website')}: `}
             <a
               onClick={() => {
-                shell.openExternal('https://deskreen.com');
+                shell.openExternal('https://github.com/rozsazoltan/deskreen');
               }}
               style={
                 isDarkTheme
@@ -184,7 +184,7 @@ export default function SettingsOverlay(props: SettingsOverlayProps) {
                     }
               }
             >
-              https://deskreen.com
+              https://github.com/rozsazoltan/deskreen
             </a>
           </Text>
         </Col>
@@ -261,7 +261,7 @@ export default function SettingsOverlay(props: SettingsOverlayProps) {
                 id="new-version-header"
                 onClick={(e) => {
                   e.preventDefault();
-                  shell.openExternal('https://deskreen.com');
+                  shell.openExternal('https://github.com/rozsazoltan/deskreen');
                 }}
                 style={{
                   width: 'calc(100% - 50px)',

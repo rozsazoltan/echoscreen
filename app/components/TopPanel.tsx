@@ -110,7 +110,7 @@ export default function TopPanel(props: any) {
             intent="none"
             className={getClassesCallback().topPanelControlButton}
             onClick={() => {
-              shell.openExternal('https://www.deskreen.com/?#howtos');
+              shell.openExternal('https://github.com/rozsazoltan/deskreen');
             }}
           >
             <Icon
@@ -154,7 +154,7 @@ export default function TopPanel(props: any) {
           <Button
             minimal
             onClick={() => {
-              shell.openExternal('https://www.deskreen.com');
+              shell.openExternal('https://github.com/rozsazoltan/deskreen');
             }}
             style={{
               borderRadius: '100px',

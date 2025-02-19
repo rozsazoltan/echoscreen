@@ -187,7 +187,7 @@ export default class MenuBuilder {
         {
           label: this.i18n.t('Learn More'),
           click() {
-            shell.openExternal('https://www.deskreen.com/');
+            shell.openExternal('https://github.com/rozsazoltan/deskreen');
           },
         },
         {

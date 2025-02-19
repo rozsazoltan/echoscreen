@@ -277,7 +277,7 @@ describe('app menu MenyBuilder tests', () => {
       });
 
       describe('when Help submenu Lean More was clicked', () => {
-        it('shoud call shell open external with proper link to https://www.deskreen.com/', () => {
+        it('shoud call shell open external with proper link to https://github.com/rozsazoltan/deskreen', () => {
           const menu = menuBuilder.buildDarwinTemplate();
           const submenuView = menu[4];
           const learnMore =
@@ -287,7 +287,7 @@ describe('app menu MenyBuilder tests', () => {
           learnMore.click();
 
           expect(shell.openExternal).toBeCalledWith(
-            'https://www.deskreen.com/'
+            'https://github.com/rozsazoltan/deskreen'
           );
         });
       });

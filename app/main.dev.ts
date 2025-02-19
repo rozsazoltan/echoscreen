@@ -69,7 +69,7 @@ export default class DeskreenApp {
           notificationInstance.show();
           notificationInstance.on('click', (event) => {
             event.preventDefault(); // prevent the browser from focusing the Notification's tab
-            shell.openExternal('https://deskreen.com');
+            shell.openExternal('https://github.com/rozsazoltan/deskreen');
           });
         };
 
