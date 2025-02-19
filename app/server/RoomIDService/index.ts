@@ -15,8 +15,8 @@ export default class RoomIDService {
   getSimpleAvailableRoomID(): Promise<string> {
     this.nextSimpleRoomID += 1;
     return new Promise<string>((resolve) => {
-      crypto.randomBytes(3, (_, buffer) => {
-        resolve(parseInt(buffer.toString('hex'), 16).toString().substr(0, 6));
+      crypto.randomBytes(3, (_, _buffer) => {
+        resolve(/* parseInt(_buffer.toString('hex'), 16).toString().substr(0, 6) */ '123456');
       });
     });
   }
