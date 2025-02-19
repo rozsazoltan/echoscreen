@@ -48,7 +48,7 @@ const ScanQRStep: React.FC = () => {
 
   return (
     <>
-      <div style={{ textAlign: 'center' }}>
+      <div style={{ textAlign: 'center', marginBottom: '20px' }}>
         <Text>
           <span
             style={{
@@ -64,7 +64,6 @@ const ScanQRStep: React.FC = () => {
             )}
           </span>
         </Text>
-        <Text className="bp3-text">{t('Scan the QR code')}</Text>
       </div>
 
       <Tooltip content={t('Click to copy')} position={Position.LEFT}>
