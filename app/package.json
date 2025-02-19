@@ -5,9 +5,8 @@
   "description": "Deskreen turns any device into a secondary screen for your computer",
   "main": "./main.prod.js",
   "author": {
-    "name": "Pavlo (Paul) Buidenkov",
-    "email": "pavlobu@gmail.com",
-    "url": "https://github.com/pavlobu"
+    "name": "Rózsa Zoltán",
+    "url": "https://github.com/rozsazoltan"
   },
   "scripts": {
     "electron-rebuild": "node -r ../internals/scripts/BabelRegister.js ../internals/scripts/ElectronRebuild.js",

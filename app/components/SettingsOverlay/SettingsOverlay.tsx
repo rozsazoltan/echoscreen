@@ -155,7 +155,7 @@ export default function SettingsOverlay(props: SettingsOverlayProps) {
             {`${t('Copyright')} © ${new Date().getFullYear()} `}
             <a
               onClick={() => {
-                shell.openExternal('https://linkedin.com/in/pavlobu');
+                shell.openExternal('https://linkedin.com/in/rozsazoltan');
               }}
               style={
                 isDarkTheme
@@ -165,7 +165,7 @@ export default function SettingsOverlay(props: SettingsOverlayProps) {
                     }
               }
             >
-              Pavlo Buidenkov (Paul)
+              Rózsa Zoltán
             </a>
           </Text>
         </Col>
