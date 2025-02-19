@@ -1,0 +1,39 @@
+name: Bug Report
+description: "Report something that's broken."
+body:
+  - type: markdown
+    attributes:
+      value: "Encountered a bug? Have you checked if it has already been reported? Is the bug reproducible? Get in touch with the community."
+  - type: input
+    attributes:
+      label: Node Version
+      description: Provide the Node version that you are using.
+      placeholder: 22.0.0
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Deskreen Version
+      description: Provide the Deskreen version that you are using. (Please note that we can only provide support from v3.x onward.)
+      placeholder: 3.0.0
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Operating System & Version
+      description: Share which operating system and version you encountered the issue on. (Please note that I can provide full support primarily on Windows systems.)
+      placeholder: "Windows 10/11 or Linux or macOS"
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: Description
+      description: Provide a detailed description of the issue you are facing.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Steps To Reproduce
+      description: Provide detailed steps to reproduce your issue. If necessary, please provide a GitHub repository to demonstrate your issue.`.
+    validations:
+      required: true

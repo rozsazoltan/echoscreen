@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Feature request
+    url: https://github.com/rozsazoltan/deskreen/discussions
+    about: 'For ideas or feature requests, start a new discussion'
+  - name: Support Questions & Other
+    url: https://github.com/rozsazoltan/deskreen/discussions
+    about: 'If you have a question or need help, start a new discussion'
+  - name: Documentation issue
+    url: https://github.com/rozsazoltan/deskreen
+    about: For documentation issues, open a pull request
