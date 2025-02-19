@@ -194,7 +194,7 @@ export default class MenuBuilder {
           label: this.i18n.t('Documentation'),
           click() {
             shell.openExternal(
-              'https://github.com/pavlobu/deskreen/blob/master/README.md'
+              'https://github.com/rozsazoltan/deskreen/blob/master/README.md'
             );
           },
         },
@@ -202,14 +202,14 @@ export default class MenuBuilder {
           label: this.i18n.t('Community Discussions'),
           click() {
             shell.openExternal(
-              'https://github.com/pavlobu/deskreen/discussions'
+              'https://github.com/rozsazoltan/deskreen/discussions'
             );
           },
         },
         {
           label: this.i18n.t('Search Issues'),
           click() {
-            shell.openExternal('https://github.com/pavlobu/deskreen/issues');
+            shell.openExternal('https://github.com/rozsazoltan/deskreen/issues');
           },
         },
       ],

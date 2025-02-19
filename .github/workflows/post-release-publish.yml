@@ -67,7 +67,7 @@ jobs:
           pkgver=$VERSION
       - name: Download the AppImage and set sha256sum
         run: |
-          wget -nv https://github.com/pavlobu/${pkgname}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver}.AppImage
+          wget -nv https://github.com/rozsazoltan/${pkgname}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver}.AppImage
           arr=(`sha256sum *.AppImage`)
           echo "$arr"
           sed -i "20s/.*/ '$arr'  /" PKGBUILD

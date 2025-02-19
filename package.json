@@ -70,8 +70,8 @@
   },
   "build": {
     "productName": "Deskreen",
-    "appId": "com.pavlobu.Deskreen",
-    "copyright": "Copyright © 2020-present Pavlo Buidenkov (Paul)",
+    "appId": "com.rozsazoltan.deskreen",
+    "copyright": "Copyright © 2025-present Rózsa Zoltán",
     "files": [
       "dist/",
       "node_modules/",
@@ -121,14 +121,14 @@
     },
     "publish": {
       "provider": "github",
-      "owner": "pavlobu",
+      "owner": "rozsazoltan",
       "repo": "deskreen",
       "private": false
     }
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pavlobu/deskreen.git"
+    "url": "git+https://github.com/rozsazoltan/deskreen.git"
   },
   "author": {
     "name": "Rózsa Zoltán",
@@ -142,7 +142,7 @@
   ],
   "license": "AGPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/pavlobu/deskreen/issues"
+    "url": "https://github.com/rozsazoltan/deskreen/issues"
   },
   "keywords": [
     "electron",
@@ -155,7 +155,7 @@
     "hot",
     "reload"
   ],
-  "homepage": "https://github.com/pavlobu/deskreen#readme",
+  "homepage": "https://github.com/rozsazoltan/deskreen#readme",
   "jest": {
     "testURL": "http://localhost/",
     "coveragePathIgnorePatterns": [

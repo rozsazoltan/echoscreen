@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: You're having technical issues. 🐞 And willing to share more details. If you don't know details, write here https://github.com/pavlobu/deskreen/discussions/68
+about: You're having technical issues. 🐞 And willing to share more details. If you don't know details, write here https://github.com/rozsazoltan/deskreen/discussions/68
 labels: 'bug'
 ---
 
@@ -11,7 +11,7 @@ labels: 'bug'
 <!-- If the following boxes are not ALL checked, your issue is likely to be closed -->
 
 - [ ] Using yarn
-- [ ] Using an up-to-date [`master` branch](https://github.com/pavlobu/deskreen/tree/master)
+- [ ] Using an up-to-date [`master` branch](https://github.com/rozsazoltan/deskreen/tree/master)
 - [ ] Using latest version of devtools. [Check the docs for how to update](https://electron-react-boilerplate.js.org/docs/dev-tools/)
 - [ ] For issue in production release, add devtools output of `DEBUG_PROD=true yarn build && yarn start`
 
