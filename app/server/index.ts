@@ -1,8 +1,6 @@
 /*
  * original JS code from darkwire.io
- * translated to typescript for Deskreen app
- * by Pavlo (Paul) Buidenkov
- * */
+ */
 
 import http from 'http';
 import express from 'express';
