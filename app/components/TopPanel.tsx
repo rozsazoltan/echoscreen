@@ -78,7 +78,7 @@ export default function TopPanel(props: any) {
     setIsConnectedDevicesDrawerOpen(!isConnectedDevicesDrawerOpen);
   }, [isConnectedDevicesDrawerOpen]);
 
-  const deskreenButtonTooltip = t('Click to visit our website');
+  const echoscreenButtonTooltip = t('Click to visit our website');
 
   const renderConnectedDevicesListButton = useCallback(() => {
     return (
@@ -110,7 +110,7 @@ export default function TopPanel(props: any) {
             intent="none"
             className={getClassesCallback().topPanelControlButton}
             onClick={() => {
-              shell.openExternal('https://github.com/rozsazoltan/deskreen');
+              shell.openExternal('https://github.com/rozsazoltan/echoscreen');
             }}
           >
             <Icon
@@ -150,30 +150,30 @@ export default function TopPanel(props: any) {
         id="logo-with-popover-visit-website"
         className={getClassesCallback().logoWithAppName}
       >
-        <Tooltip content={deskreenButtonTooltip} position={Position.BOTTOM}>
+        <Tooltip content={echoscreenButtonTooltip} position={Position.BOTTOM}>
           <Button
             minimal
             onClick={() => {
-              shell.openExternal('https://github.com/rozsazoltan/deskreen');
+              shell.openExternal('https://github.com/rozsazoltan/echoscreen');
             }}
             style={{
               borderRadius: '100px',
             }}
           >
             <h4
-              id="deskreen-top-app-name-header"
+              id="echoscreen-top-app-name-header"
               className={getClassesCallback().appNameHeader}
               style={{
                 transform: 'translateY(-3px)',
               }}
             >
-              Deskreen
+              EchoScreen
             </h4>
           </Button>
         </Tooltip>
       </div>
     );
-  }, [deskreenButtonTooltip, getClassesCallback]);
+  }, [echoscreenButtonTooltip, getClassesCallback]);
 
   return (
     <>

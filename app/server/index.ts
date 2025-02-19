@@ -18,7 +18,7 @@ import Logger from '../utils/LoggerWithFilePrefix';
 import isProduction from '../utils/isProduction';
 import SocketsIPService from './socketsIPService';
 import socketIOServerStore from './store/socketIOServerStore';
-import getDeskreenGlobal from '../utils/mainProcessHelpers/getDeskreenGlobal';
+import getEchoScreenGlobal from '../utils/mainProcessHelpers/getEchoScreenGlobal';
 import DarkwireSocket from './darkwireSocket';
 import getStore from './store';
 
@@ -33,7 +33,7 @@ const ioHandleOnConnection = (socket: Io.Socket) => {
   const store = getStore();
 
   setTimeout(async () => {
-    if (!getDeskreenGlobal().roomIDService.isRoomIDTaken(roomId)) {
+    if (!getEchoScreenGlobal().roomIDService.isRoomIDTaken(roomId)) {
       socket.emit('NOT_ALLOWED');
       setTimeout(() => {
         socket.disconnect();
@@ -70,7 +70,7 @@ function setStaticFileHeaders(
   });
 }
 
-class DeskreenSignalingServer {
+class EchoScreenSignalingServer {
   log = new Logger(__filename);
 
   expressApp: express.Application;
@@ -145,7 +145,7 @@ class DeskreenSignalingServer {
 
   callListenOnHttpServer() {
     return this.server.listen(this.port, () => {
-      this.log.info(`Deskreen signaling server is online at port ${this.port}`);
+      this.log.info(`EchoScreen signaling server is online at port ${this.port}`);
     });
   }
 
@@ -154,6 +154,6 @@ class DeskreenSignalingServer {
   }
 }
 
-const deskreenServer = new DeskreenSignalingServer();
+const echoscreenServer = new EchoScreenSignalingServer();
 
-export default deskreenServer;
+export default echoscreenServer;

@@ -97,7 +97,7 @@ function ConnectionPropmpts(props: ConnectionPropmptsProps) {
             >
               <div style={{ width: '100%' }}>
                 <Row center="xs">
-                  <H2 className="bp3-text-muted">{t('Deskreen Screen Viewer')}</H2>
+                  <H2 className="bp3-text-muted">{t('EchoScreen Screen Viewer')}</H2>
                 </Row>
                 <Row center="xs" style={{ width: '100%', margin: '0 auto' }}>
                   <Col md={6} xl={4}>

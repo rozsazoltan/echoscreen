@@ -1,9 +1,9 @@
-## Deskreen `drivers` : getting rid from Display Dummy Plugs
+## EchoScreen `drivers` : getting rid from Display Dummy Plugs
 
 We plan to add virtual display driver support for three most popular operating systems. The driver related codes can be placed in following subdirectories `win`, `mac`, `linux`.
 It is a challenging technical task and we need to enable an entire community power to solve it. If you know a solution and willing to contribute, you are highly welcome!
 
-### Things that you need to keep in mind while making your virtual display driver solution for Deskreen:
+### Things that you need to keep in mind while making your virtual display driver solution for EchoScreen:
 
 1. The driver code can be in any language you are comfortable with, the most important that the API should provide a functionality to:
 

@@ -143,7 +143,7 @@ export default function SettingsOverlay(props: SettingsOverlayProps) {
           />
         </Col>
         <Col xs={12}>
-          <H3>{t('About Deskreen')}</H3>
+          <H3>{t('About EchoScreen')}</H3>
         </Col>
         <Col xs={12}>
           <Text>
@@ -174,7 +174,7 @@ export default function SettingsOverlay(props: SettingsOverlayProps) {
             {`${t('Website')}: `}
             <a
               onClick={() => {
-                shell.openExternal('https://github.com/rozsazoltan/deskreen');
+                shell.openExternal('https://github.com/rozsazoltan/echoscreen');
               }}
               style={
                 isDarkTheme
@@ -184,7 +184,7 @@ export default function SettingsOverlay(props: SettingsOverlayProps) {
                     }
               }
             >
-              https://github.com/rozsazoltan/deskreen
+              https://github.com/rozsazoltan/echoscreen
             </a>
           </Text>
         </Col>
@@ -261,7 +261,7 @@ export default function SettingsOverlay(props: SettingsOverlayProps) {
                 id="new-version-header"
                 onClick={(e) => {
                   e.preventDefault();
-                  shell.openExternal('https://github.com/rozsazoltan/deskreen');
+                  shell.openExternal('https://github.com/rozsazoltan/echoscreen');
                 }}
                 style={{
                   width: 'calc(100% - 50px)',
@@ -269,7 +269,7 @@ export default function SettingsOverlay(props: SettingsOverlayProps) {
               >
                 {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
                 {`${t(
-                  'A new version of Deskreen is available! Click to download new version'
+                  'A new version of EchoScreen is available! Click to download new version'
                 )} ${latestVersion}`}
               </H4>
             ) : (

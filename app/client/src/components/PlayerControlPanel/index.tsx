@@ -112,7 +112,7 @@ function PlayerControlPanel(props: PlayerControlPanelProps) {
               <Button
                 minimal
                 onClick={() => {
-                  window.open('https://github.com/rozsazoltan/deskreen', '_blank');
+                  window.open('https://github.com/rozsazoltan/echoscreen', '_blank');
                 }}
               >
                 <Row middle="xs" style={{ opacity: '0.75' }}>
@@ -125,7 +125,7 @@ function PlayerControlPanel(props: PlayerControlPanelProps) {
                     />
                   </Col>
                   <Col xs={8}>
-                    <H5 style={{ marginBottom: '0px' }}>Deskreen</H5>
+                    <H5 style={{ marginBottom: '0px' }}>EchoScreen</H5>
                   </Col>
                 </Row>
               </Button>

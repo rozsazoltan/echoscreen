@@ -8,7 +8,7 @@ import { ToastProvider, DefaultToast } from 'react-toast-notifications';
 
 import TopPanel from '../components/TopPanel';
 import { LIGHT_UI_BACKGROUND } from './SettingsProvider';
-import DeskreenStepper from './DeskreenStepper';
+import EchoScreenStepper from './EchoScreenStepper';
 
 // @ts-ignore: it is ok here, be like js it is fine
 // eslint-disable-next-line react/prop-types
@@ -42,7 +42,7 @@ export default function HomePage() {
     >
       <div className={Classes.TREE}>
         <TopPanel stepperRef={stepperRef} />
-        <DeskreenStepper ref={stepperRef} />
+        <EchoScreenStepper ref={stepperRef} />
         {/* <Home /> */}
       </div>
     </ToastProvider>

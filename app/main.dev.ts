@@ -12,7 +12,7 @@ import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 import path from 'path';
 import { app, BrowserWindow, shell } from 'electron';
-import store from './deskreen-electron-store';
+import store from './echoscreen-electron-store';
 import i18n from './configs/i18next.config';
 import signalingServer from './server';
 import MenuBuilder from './menu';
@@ -22,9 +22,9 @@ import installExtensions from './utils/installExtensions';
 import getNewVersionTag from './utils/getNewVersionTag';
 import initIpcMainHandlers from './main/ipcMainHandlers';
 import { ElectronStoreKeys } from './enums/ElectronStoreKeys.enum';
-import getDeskreenGlobal from './utils/mainProcessHelpers/getDeskreenGlobal';
+import getEchoScreenGlobal from './utils/mainProcessHelpers/getEchoScreenGlobal';
 
-export default class DeskreenApp {
+export default class EchoScreenApp {
   mainWindow: BrowserWindow | null = null;
 
   menuBuilder: MenuBuilder | null = null;
@@ -58,9 +58,9 @@ export default class DeskreenApp {
 
         const showNotification = () => {
           const notification = {
-            title: i18n.t('Deskreen Update is Available!'),
+            title: i18n.t('EchoScreen Update is Available!'),
             body: `${i18n.t('Your current version is')} ${
-              getDeskreenGlobal().currentAppVersion
+              getEchoScreenGlobal().currentAppVersion
             } | ${i18n.t(
               'Click to download new updated version'
             )} ${latestAppVersion}`,
@@ -69,15 +69,15 @@ export default class DeskreenApp {
           notificationInstance.show();
           notificationInstance.on('click', (event) => {
             event.preventDefault(); // prevent the browser from focusing the Notification's tab
-            shell.openExternal('https://github.com/rozsazoltan/deskreen');
+            shell.openExternal('https://github.com/rozsazoltan/echoscreen');
           });
         };
 
         if (
           latestAppVersion !== '' &&
-          latestAppVersion !== getDeskreenGlobal().currentAppVersion
+          latestAppVersion !== getEchoScreenGlobal().currentAppVersion
         ) {
-          getDeskreenGlobal().latestAppVersion = latestAppVersion;
+          getEchoScreenGlobal().latestAppVersion = latestAppVersion;
           showNotification();
         }
       });
@@ -210,5 +210,5 @@ export default class DeskreenApp {
   }
 }
 
-const deskreenApp = new DeskreenApp();
-deskreenApp.start();
+const echoscreenApp = new EchoScreenApp();
+echoscreenApp.start();

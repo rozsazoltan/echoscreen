@@ -1,11 +1,11 @@
 blank_issues_enabled: false
 contact_links:
   - name: Feature request
-    url: https://github.com/rozsazoltan/deskreen/discussions/categories/ideas
+    url: https://github.com/rozsazoltan/echoscreen/discussions/categories/ideas
     about: 'For ideas or feature requests, start a new discussion'
   - name: Support Questions & Other
-    url: https://github.com/rozsazoltan/deskreen/discussions/categories/q-a
+    url: https://github.com/rozsazoltan/echoscreen/discussions/categories/q-a
     about: 'If you have a question or need help, start a new discussion'
   - name: Documentation issue
-    url: https://github.com/rozsazoltan/deskreen/pulls
+    url: https://github.com/rozsazoltan/echoscreen/pulls
     about: For documentation issues, open a pull request

@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/lines-between-class-members */
 import { ipcRenderer } from 'electron';
 import { prepare as prepareMessage } from '../../utils/message';
-import DeskreenCrypto from '../../utils/crypto';
+import EchoScreenCrypto from '../../utils/crypto';
 import connectSocket from '../../server/connectSocket';
 import handleCreatePeer from './handleCreatePeer';
 import handleSocket from './handleSocket';
@@ -23,7 +23,7 @@ export default class PeerConnection {
   sharingSessionID: string;
   roomID: string;
   socket: SocketIOClient.Socket;
-  crypto: DeskreenCrypto;
+  crypto: EchoScreenCrypto;
   user: LocalPeerUser;
   partner: PartnerPeerUser;
   peer = NullSimplePeer;
@@ -50,7 +50,7 @@ export default class PeerConnection {
     this.sharingSessionID = sharingSessionID;
     this.isSocketRoomLocked = false;
     this.roomID = encodeURI(roomID);
-    this.crypto = new DeskreenCrypto();
+    this.crypto = new EchoScreenCrypto();
     this.socket = connectSocket(this.roomID);
     this.user = user;
     this.partner = NullUser;

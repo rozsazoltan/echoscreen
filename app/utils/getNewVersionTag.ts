@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const githubApiRepoTagsUrl =
-  'https://api.github.com/repos/rozsazoltan/deskreen/releases/latest';
+  'https://api.github.com/repos/rozsazoltan/echoscreen/releases/latest';
 
 export default async function getNewVersionTag() {
   let latestVersionTag = '';

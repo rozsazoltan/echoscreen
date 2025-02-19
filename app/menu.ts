@@ -58,15 +58,15 @@ export default class MenuBuilder {
 
   buildDarwinTemplate(): MenuItemConstructorOptions[] {
     const subMenuAbout: DarwinMenuItemConstructorOptions = {
-      label: 'Deskreen',
+      label: 'EchoScreen',
       submenu: [
         {
-          label: this.i18n.t('About Deskreen'),
+          label: this.i18n.t('About EchoScreen'),
           selector: 'orderFrontStandardAboutPanel:',
         },
         { type: 'separator' },
         {
-          label: this.i18n.t('Hide Deskreen'),
+          label: this.i18n.t('Hide EchoScreen'),
           accelerator: 'Command+H',
           selector: 'hide:',
         },
@@ -187,14 +187,14 @@ export default class MenuBuilder {
         {
           label: this.i18n.t('Learn More'),
           click() {
-            shell.openExternal('https://github.com/rozsazoltan/deskreen');
+            shell.openExternal('https://github.com/rozsazoltan/echoscreen');
           },
         },
         {
           label: this.i18n.t('Documentation'),
           click() {
             shell.openExternal(
-              'https://github.com/rozsazoltan/deskreen/blob/master/README.md'
+              'https://github.com/rozsazoltan/echoscreen/blob/master/README.md'
             );
           },
         },
@@ -202,14 +202,14 @@ export default class MenuBuilder {
           label: this.i18n.t('Community Discussions'),
           click() {
             shell.openExternal(
-              'https://github.com/rozsazoltan/deskreen/discussions'
+              'https://github.com/rozsazoltan/echoscreen/discussions'
             );
           },
         },
         {
           label: this.i18n.t('Search Issues'),
           click() {
-            shell.openExternal('https://github.com/rozsazoltan/deskreen/issues');
+            shell.openExternal('https://github.com/rozsazoltan/echoscreen/issues');
           },
         },
       ],

@@ -16,7 +16,7 @@ fixture`Main App UX Test`
     await t.eval(() => location.reload());
   });
 
-// Deskreen selectors
+// EchoScreen selectors
 const connectTestDeviceButton = Selector('button').withText(
   'Connect Test Device'
 );
@@ -164,8 +164,8 @@ async function openConnectedDevicesListDrawer(t) {
 
 test(`when app is launched,
 
-  it should have correct app title as "Deskreen"`, async (t) => {
-  await t.expect(getPageTitle()).eql('Deskreen');
+  it should have correct app title as "EchoScreen"`, async (t) => {
+  await t.expect(getPageTitle()).eql('EchoScreen');
 });
 
 test(`when on Scan QR code step (step 1),

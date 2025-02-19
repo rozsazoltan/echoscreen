@@ -13,8 +13,8 @@ body:
       required: true
   - type: input
     attributes:
-      label: Deskreen Version
-      description: Provide the Deskreen version that you are using. (Please note that we can only provide support from v3.x onward.)
+      label: EchoScreen Version
+      description: Provide the EchoScreen version that you are using. (Please note that we can only provide support from v3.x onward.)
       placeholder: 3.0.0
     validations:
       required: true

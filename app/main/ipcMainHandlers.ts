@@ -4,13 +4,13 @@ import i18n from '../configs/i18next.config';
 import ConnectedDevicesService from '../features/ConnectedDevicesService';
 import SharingSession from '../features/SharingSessionService/SharingSession';
 import RoomIDService from '../server/RoomIDService';
-import getDeskreenGlobal from '../utils/mainProcessHelpers/getDeskreenGlobal';
+import getEchoScreenGlobal from '../utils/mainProcessHelpers/getEchoScreenGlobal';
 import signalingServer from '../server';
 import Logger from '../utils/LoggerWithFilePrefix';
 import { IpcEvents } from './IpcEvents.enum';
 import SharingSessionStatusEnum from '../features/SharingSessionService/SharingSessionStatusEnum';
 import { ElectronStoreKeys } from '../enums/ElectronStoreKeys.enum';
-import store from '../deskreen-electron-store';
+import store from '../echoscreen-electron-store';
 
 const log = new Logger(__filename);
 const v4IPGetter = require('internal-ip').v4;
@@ -48,33 +48,33 @@ export default function initIpcMainHandlers(mainWindow: BrowserWindow) {
   });
 
   ipcMain.handle('main-window-onbeforeunload', () => {
-    const deskreenGlobal = getDeskreenGlobal();
-    deskreenGlobal.connectedDevicesService = new ConnectedDevicesService();
-    deskreenGlobal.roomIDService = new RoomIDService();
-    deskreenGlobal.sharingSessionService.sharingSessions.forEach(
+    const echoscreenGlobal = getEchoScreenGlobal();
+    echoscreenGlobal.connectedDevicesService = new ConnectedDevicesService();
+    echoscreenGlobal.roomIDService = new RoomIDService();
+    echoscreenGlobal.sharingSessionService.sharingSessions.forEach(
       (sharingSession: SharingSession) => {
         sharingSession.denyConnectionForPartner();
         sharingSession.destroy();
       }
     );
 
-    deskreenGlobal.rendererWebrtcHelpersService.helpers.forEach(
+    echoscreenGlobal.rendererWebrtcHelpersService.helpers.forEach(
       (helperWindow) => {
         helperWindow.close();
       }
     );
 
-    deskreenGlobal.sharingSessionService.waitingForConnectionSharingSession = null;
-    deskreenGlobal.rendererWebrtcHelpersService.helpers.clear();
-    deskreenGlobal.sharingSessionService.sharingSessions.clear();
+    echoscreenGlobal.sharingSessionService.waitingForConnectionSharingSession = null;
+    echoscreenGlobal.rendererWebrtcHelpersService.helpers.clear();
+    echoscreenGlobal.sharingSessionService.sharingSessions.clear();
   });
 
   ipcMain.handle('get-latest-version', () => {
-    return getDeskreenGlobal().latestAppVersion;
+    return getEchoScreenGlobal().latestAppVersion;
   });
 
   ipcMain.handle('get-current-version', () => {
-    return getDeskreenGlobal().currentAppVersion;
+    return getEchoScreenGlobal().currentAppVersion;
   });
 
   ipcMain.handle('get-local-lan-ip', async () => {
@@ -89,24 +89,24 @@ export default function initIpcMainHandlers(mainWindow: BrowserWindow) {
   });
 
   ipcMain.handle(IpcEvents.GetAppPath, () => {
-    const deskreenGlobal = getDeskreenGlobal();
-    return deskreenGlobal.appPath;
+    const echoscreenGlobal = getEchoScreenGlobal();
+    return echoscreenGlobal.appPath;
   });
 
   ipcMain.handle(IpcEvents.UnmarkRoomIDAsTaken, (_, roomID) => {
-    const deskreenGlobal = getDeskreenGlobal();
-    deskreenGlobal.roomIDService.unmarkRoomIDAsTaken(roomID);
+    const echoscreenGlobal = getEchoScreenGlobal();
+    echoscreenGlobal.roomIDService.unmarkRoomIDAsTaken(roomID);
   });
 
   function onDeviceConnectedCallback(device: Device): void {
-    getDeskreenGlobal().connectedDevicesService.setPendingConnectionDevice(
+    getEchoScreenGlobal().connectedDevicesService.setPendingConnectionDevice(
       device
     );
     mainWindow.webContents.send(IpcEvents.SetPendingConnectionDevice, device);
   }
 
   ipcMain.handle(IpcEvents.CreateWaitingForConnectionSharingSession, () => {
-    getDeskreenGlobal()
+    getEchoScreenGlobal()
       .sharingSessionService.createWaitingForConnectionSharingSession()
       // eslint-disable-next-line promise/always-return
       .then((waitingForConnectionSharingSession) => {
@@ -118,23 +118,23 @@ export default function initIpcMainHandlers(mainWindow: BrowserWindow) {
   });
 
   ipcMain.handle(IpcEvents.ResetWaitingForConnectionSharingSession, () => {
-    const sharingSession = getDeskreenGlobal().sharingSessionService
+    const sharingSession = getEchoScreenGlobal().sharingSessionService
       .waitingForConnectionSharingSession;
     sharingSession?.disconnectByHostMachineUser();
     sharingSession?.destroy();
     sharingSession?.setStatus(SharingSessionStatusEnum.NOT_CONNECTED);
-    getDeskreenGlobal().sharingSessionService.sharingSessions.delete(
+    getEchoScreenGlobal().sharingSessionService.sharingSessions.delete(
       sharingSession?.id as string
     );
-    getDeskreenGlobal().sharingSessionService.waitingForConnectionSharingSession = null;
+    getEchoScreenGlobal().sharingSessionService.waitingForConnectionSharingSession = null;
   });
 
   ipcMain.handle(IpcEvents.SetDeviceConnectedStatus, () => {
     if (
-      getDeskreenGlobal().sharingSessionService
+      getEchoScreenGlobal().sharingSessionService
         .waitingForConnectionSharingSession !== null
     ) {
-      const sharingSession = getDeskreenGlobal().sharingSessionService
+      const sharingSession = getEchoScreenGlobal().sharingSessionService
         .waitingForConnectionSharingSession;
       sharingSession?.setStatus(SharingSessionStatusEnum.CONNECTED);
     }
@@ -143,7 +143,7 @@ export default function initIpcMainHandlers(mainWindow: BrowserWindow) {
   ipcMain.handle(
     IpcEvents.GetSourceDisplayIDByDesktopCapturerSourceID,
     (_, sourceId) => {
-      return getDeskreenGlobal().desktopCapturerSourcesService.getSourceDisplayIDByDisplayCapturerSourceID(
+      return getEchoScreenGlobal().desktopCapturerSourcesService.getSourceDisplayIDByDisplayCapturerSourceID(
         sourceId
       );
     }
@@ -152,17 +152,17 @@ export default function initIpcMainHandlers(mainWindow: BrowserWindow) {
   ipcMain.handle(
     IpcEvents.DisconnectPeerAndDestroySharingSessionBySessionID,
     (_, sessionId) => {
-      const sharingSession = getDeskreenGlobal().sharingSessionService.sharingSessions.get(
+      const sharingSession = getEchoScreenGlobal().sharingSessionService.sharingSessions.get(
         sessionId
       );
       if (sharingSession) {
-        getDeskreenGlobal().connectedDevicesService.disconnectDeviceByID(
+        getEchoScreenGlobal().connectedDevicesService.disconnectDeviceByID(
           sharingSession.deviceID
         );
       }
       sharingSession?.disconnectByHostMachineUser();
       sharingSession?.destroy();
-      getDeskreenGlobal().sharingSessionService.sharingSessions.delete(
+      getEchoScreenGlobal().sharingSessionService.sharingSessions.delete(
         sessionId
       );
     }
@@ -171,22 +171,22 @@ export default function initIpcMainHandlers(mainWindow: BrowserWindow) {
   ipcMain.handle(
     IpcEvents.GetDesktopCapturerSourceIdBySharingSessionId,
     (_, sessionId) => {
-      return getDeskreenGlobal().sharingSessionService.sharingSessions.get(
+      return getEchoScreenGlobal().sharingSessionService.sharingSessions.get(
         sessionId
       )?.desktopCapturerSourceID;
     }
   );
 
   ipcMain.handle(IpcEvents.GetConnectedDevices, () => {
-    return getDeskreenGlobal().connectedDevicesService.getDevices();
+    return getEchoScreenGlobal().connectedDevicesService.getDevices();
   });
 
   ipcMain.handle(IpcEvents.DisconnectDeviceById, (_, id) => {
-    getDeskreenGlobal().connectedDevicesService.disconnectDeviceByID(id);
+    getEchoScreenGlobal().connectedDevicesService.disconnectDeviceByID(id);
   });
 
   ipcMain.handle(IpcEvents.DisconnectAllDevices, () => {
-    getDeskreenGlobal().connectedDevicesService.disconnectAllDevices();
+    getEchoScreenGlobal().connectedDevicesService.disconnectAllDevices();
   });
 
   ipcMain.handle(IpcEvents.AppLanguageChanged, (_, newLang) => {
@@ -194,7 +194,7 @@ export default function initIpcMainHandlers(mainWindow: BrowserWindow) {
       store.delete(ElectronStoreKeys.AppLanguage);
     }
     store.set(ElectronStoreKeys.AppLanguage, newLang);
-    getDeskreenGlobal().sharingSessionService.sharingSessions.forEach(
+    getEchoScreenGlobal().sharingSessionService.sharingSessions.forEach(
       (sharingSession) => {
         sharingSession?.appLanguageChanged();
       }
@@ -202,7 +202,7 @@ export default function initIpcMainHandlers(mainWindow: BrowserWindow) {
   });
 
   ipcMain.handle(IpcEvents.GetDesktopCapturerServiceSourcesMap, () => {
-    const map = getDeskreenGlobal().desktopCapturerSourcesService.getSourcesMap();
+    const map = getEchoScreenGlobal().desktopCapturerSourcesService.getSourcesMap();
     const res = {};
     // eslint-disable-next-line guard-for-in
     for (const key of map.keys()) {
@@ -223,7 +223,7 @@ export default function initIpcMainHandlers(mainWindow: BrowserWindow) {
   ipcMain.handle(
     IpcEvents.GetWaitingForConnectionSharingSessionSourceId,
     () => {
-      return getDeskreenGlobal().sharingSessionService
+      return getEchoScreenGlobal().sharingSessionService
         .waitingForConnectionSharingSession?.desktopCapturerSourceID;
     }
   );
@@ -231,31 +231,31 @@ export default function initIpcMainHandlers(mainWindow: BrowserWindow) {
   ipcMain.handle(
     IpcEvents.StartSharingOnWaitingForConnectionSharingSession,
     () => {
-      const sharingSession = getDeskreenGlobal().sharingSessionService
+      const sharingSession = getEchoScreenGlobal().sharingSessionService
         .waitingForConnectionSharingSession;
       if (sharingSession !== null) {
         sharingSession.callPeer();
         sharingSession.status = SharingSessionStatusEnum.SHARING;
       }
-      getDeskreenGlobal().connectedDevicesService.addDevice(
-        getDeskreenGlobal().connectedDevicesService.pendingConnectionDevice
+      getEchoScreenGlobal().connectedDevicesService.addDevice(
+        getEchoScreenGlobal().connectedDevicesService.pendingConnectionDevice
       );
-      getDeskreenGlobal().connectedDevicesService.resetPendingConnectionDevice();
+      getEchoScreenGlobal().connectedDevicesService.resetPendingConnectionDevice();
     }
   );
 
   ipcMain.handle(IpcEvents.GetPendingConnectionDevice, () => {
-    return getDeskreenGlobal().connectedDevicesService.pendingConnectionDevice;
+    return getEchoScreenGlobal().connectedDevicesService.pendingConnectionDevice;
   });
 
   ipcMain.handle(IpcEvents.GetWaitingForConnectionSharingSessionRoomId, () => {
     if (
-      getDeskreenGlobal().sharingSessionService
+      getEchoScreenGlobal().sharingSessionService
         .waitingForConnectionSharingSession === null
     ) {
       return undefined;
     }
-    return getDeskreenGlobal().sharingSessionService
+    return getEchoScreenGlobal().sharingSessionService
       .waitingForConnectionSharingSession?.roomID;
   });
 
@@ -263,24 +263,24 @@ export default function initIpcMainHandlers(mainWindow: BrowserWindow) {
     IpcEvents.GetDesktopSharingSourceIds,
     (_, { isEntireScreenToShareChosen }) => {
       if (isEntireScreenToShareChosen === true) {
-        return getDeskreenGlobal()
+        return getEchoScreenGlobal()
           .desktopCapturerSourcesService.getScreenSources()
           .map((source) => source.id);
       }
-      return getDeskreenGlobal()
+      return getEchoScreenGlobal()
         .desktopCapturerSourcesService.getAppWindowSources()
         .map((source) => source.id);
     }
   );
 
   ipcMain.handle(IpcEvents.SetDesktopCapturerSourceId, (_, id) => {
-    getDeskreenGlobal().sharingSessionService.waitingForConnectionSharingSession?.setDesktopCapturerSourceID(
+    getEchoScreenGlobal().sharingSessionService.waitingForConnectionSharingSession?.setDesktopCapturerSourceID(
       id
     );
   });
 
   ipcMain.handle(IpcEvents.NotifyAllSessionsWithAppThemeChanged, () => {
-    getDeskreenGlobal().sharingSessionService.sharingSessions.forEach(
+    getEchoScreenGlobal().sharingSessionService.sharingSessions.forEach(
       (sharingSession) => {
         sharingSession?.appThemeChanged();
       }
@@ -323,11 +323,11 @@ export default function initIpcMainHandlers(mainWindow: BrowserWindow) {
   });
 
   ipcMain.handle(IpcEvents.DestroySharingSessionById, (_, id) => {
-    const sharingSession = getDeskreenGlobal().sharingSessionService.sharingSessions.get(
+    const sharingSession = getEchoScreenGlobal().sharingSessionService.sharingSessions.get(
       id
     );
     sharingSession?.setStatus(SharingSessionStatusEnum.DESTROYED);
     sharingSession?.destroy();
-    getDeskreenGlobal().sharingSessionService.sharingSessions.delete(id);
+    getEchoScreenGlobal().sharingSessionService.sharingSessions.delete(id);
   });
 }

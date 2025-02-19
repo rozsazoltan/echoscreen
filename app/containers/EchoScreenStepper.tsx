@@ -27,7 +27,7 @@ import IntermediateStep from '../components/StepsOfStepper/IntermediateStep';
 import AllowConnectionForDeviceAlert from '../components/AllowConnectionForDeviceAlert';
 import DeviceConnectedInfoButton from '../components/StepperPanel/DeviceConnectedInfoButton';
 import ColorlibStepIcon, {
-  StepIconPropsDeskreen,
+  StepIconPropsEchoScreen,
 } from '../components/StepperPanel/ColorlibStepIcon';
 import ColorlibConnector from '../components/StepperPanel/ColorlibConnector';
 import { SettingsContext } from './SettingsProvider';
@@ -61,7 +61,7 @@ function getSteps(t: TFunction) {
 }
 
 // eslint-disable-next-line react/display-name
-const DeskreenStepper = React.forwardRef((_props, ref) => {
+const EchoScreenStepper = React.forwardRef((_props, ref) => {
   const { t } = useTranslation();
 
   const classes = useStyles();
@@ -263,14 +263,14 @@ const DeskreenStepper = React.forwardRef((_props, ref) => {
     (label, idx) => {
       return (
         <StepLabel
-          id="step-label-deskreen"
+          id="step-label-echoscreen"
           className={classes.stepLabelContent}
           StepIconComponent={ColorlibStepIcon}
           StepIconProps={
             {
               isEntireScreenSelected,
               isApplicationWindowSelected,
-            } as StepIconPropsDeskreen
+            } as StepIconPropsEchoScreen
           }
         >
           {pendingConnectionDevice && idx === 0 && isUserAllowedConnection ? (
@@ -330,7 +330,7 @@ const DeskreenStepper = React.forwardRef((_props, ref) => {
               <H3>No WiFi and LAN connection.</H3>
             </Row>
             <Row center="xs">
-              <H5>Deskreen works only with WiFi and LAN networks.</H5>
+              <H5>EchoScreen works only with WiFi and LAN networks.</H5>
             </Row>
             <Row center="xs">
               <Spinner size={50} />
@@ -393,4 +393,4 @@ const DeskreenStepper = React.forwardRef((_props, ref) => {
   );
 });
 
-export default DeskreenStepper;
+export default EchoScreenStepper;

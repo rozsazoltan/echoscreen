@@ -3,7 +3,7 @@
 exports[`app menu MenyBuilder tests when MenyBuilder created properly when menu from buildDarwinTemplate was created should match a snapshot 1`] = `
 Array [
   Object {
-    "label": "Deskreen",
+    "label": "EchoScreen",
     "submenu": Array [
       Object {
         "label": undefined,

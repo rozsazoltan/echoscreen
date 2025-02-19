@@ -1,6 +1,6 @@
 /*
  * original JS code from darkwire.io
- * translated to typescript for Deskreen app
+ * translated to typescript for EchoScreen app
  * */
 import getStore from './store';
 

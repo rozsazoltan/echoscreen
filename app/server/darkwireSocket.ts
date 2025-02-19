@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /*
  * original JS code from darkwire.io
- * translated and adapted to typescript for Deskreen app
+ * translated and adapted to typescript for EchoScreen app
  * */
 
 /* eslint-disable no-async-promise-executor */

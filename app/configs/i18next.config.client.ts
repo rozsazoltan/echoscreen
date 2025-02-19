@@ -26,7 +26,7 @@ import translationFR from '../locales/fr/translation.json';
 import translationSV from '../locales/sv/translation.json';
 import { IpcEvents } from '../main/IpcEvents.enum';
 import { ElectronStoreKeys } from '../enums/ElectronStoreKeys.enum';
-import store from '../deskreen-electron-store';
+import store from '../echoscreen-electron-store';
 
 export const getLangFullNameToLangISOKeyMap = (): Map<string, string> => {
   const res = new Map<string, string>();

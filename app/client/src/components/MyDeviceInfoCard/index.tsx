@@ -30,7 +30,7 @@ function MyDeviceInfoCard(props: MyDeviceDetailsCardProps) {
       <Callout>
         <Text>{`${t('Device Type')}: ${myDeviceType}`}</Text>
         <Tooltip
-          content={t('Your Device IP should match with Device IP in alert popup appeared on your computer, where Deskreen is running')}
+          content={t('Your Device IP should match with Device IP in alert popup appeared on your computer, where EchoScreen is running')}
           position={Position.TOP}
         >
           <div
@@ -49,7 +49,7 @@ function MyDeviceInfoCard(props: MyDeviceDetailsCardProps) {
         <Text>{`${t('Device OS')}: ${myOS}`}</Text>
       </Callout>
       <Text className="bp3-text-muted">
-        {t('These details should match with the ones that you see in alert popup on computer screen, where Deskreen is running')}
+        {t('These details should match with the ones that you see in alert popup on computer screen, where EchoScreen is running')}
       </Text>
     </Card>
   );

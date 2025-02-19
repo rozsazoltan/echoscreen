@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { StepIconProps } from '@material-ui/core/StepIcon';
 import { Icon } from '@blueprintjs/core';
 
-export interface StepIconPropsDeskreen extends StepIconProps {
+export interface StepIconPropsEchoScreen extends StepIconProps {
   isEntireScreenSelected: boolean;
   isApplicationWindowSelected: boolean;
 }
@@ -40,7 +40,7 @@ const getDesktopOrAppIcon = (isDesktop: boolean, color: string) => {
   return <Icon icon="application" iconSize={25} color={color} />;
 };
 
-export default function ColorlibStepIcon(props: StepIconPropsDeskreen) {
+export default function ColorlibStepIcon(props: StepIconPropsEchoScreen) {
   const { icon } = props;
   const classes = useColorlibStepIconStyles();
   const { active, completed, isEntireScreenSelected } = props;

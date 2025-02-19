@@ -277,7 +277,7 @@ describe('app menu MenyBuilder tests', () => {
       });
 
       describe('when Help submenu Lean More was clicked', () => {
-        it('shoud call shell open external with proper link to https://github.com/rozsazoltan/deskreen', () => {
+        it('shoud call shell open external with proper link to https://github.com/rozsazoltan/echoscreen', () => {
           const menu = menuBuilder.buildDarwinTemplate();
           const submenuView = menu[4];
           const learnMore =
@@ -287,13 +287,13 @@ describe('app menu MenyBuilder tests', () => {
           learnMore.click();
 
           expect(shell.openExternal).toBeCalledWith(
-            'https://github.com/rozsazoltan/deskreen'
+            'https://github.com/rozsazoltan/echoscreen'
           );
         });
       });
 
       describe('when Help submenu Documentation was clicked', () => {
-        it('shoud call shell open external with proper link to https://github.com/rozsazoltan/deskreen/blob/master/README.md', () => {
+        it('shoud call shell open external with proper link to https://github.com/rozsazoltan/echoscreen/blob/master/README.md', () => {
           const menu = menuBuilder.buildDarwinTemplate();
           const submenuView = menu[4];
           const learnMore =
@@ -303,13 +303,13 @@ describe('app menu MenyBuilder tests', () => {
           learnMore.click();
 
           expect(shell.openExternal).toBeCalledWith(
-            'https://github.com/rozsazoltan/deskreen/blob/master/README.md'
+            'https://github.com/rozsazoltan/echoscreen/blob/master/README.md'
           );
         });
       });
 
       describe('when Help submenu Community Discussions was clicked', () => {
-        it('shoud call shell open external with proper link to https://github.com/rozsazoltan/deskreen/discussions', () => {
+        it('shoud call shell open external with proper link to https://github.com/rozsazoltan/echoscreen/discussions', () => {
           const menu = menuBuilder.buildDarwinTemplate();
           const submenuView = menu[4];
           const learnMore =
@@ -319,13 +319,13 @@ describe('app menu MenyBuilder tests', () => {
           learnMore.click();
 
           expect(shell.openExternal).toBeCalledWith(
-            'https://github.com/rozsazoltan/deskreen/discussions'
+            'https://github.com/rozsazoltan/echoscreen/discussions'
           );
         });
       });
 
       describe('when Help submenu Search Issues was clicked', () => {
-        it('shoud call shell open external with proper link to https://github.com/rozsazoltan/deskreen/issues', () => {
+        it('shoud call shell open external with proper link to https://github.com/rozsazoltan/echoscreen/issues', () => {
           const menu = menuBuilder.buildDarwinTemplate();
           const submenuView = menu[4];
           const learnMore =
@@ -335,7 +335,7 @@ describe('app menu MenyBuilder tests', () => {
           learnMore.click();
 
           expect(shell.openExternal).toBeCalledWith(
-            'https://github.com/rozsazoltan/deskreen/issues'
+            'https://github.com/rozsazoltan/echoscreen/issues'
           );
         });
       });

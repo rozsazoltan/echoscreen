@@ -2,12 +2,12 @@
 
 // // import { BrowserWindow, app, ipcMain, screen } from 'electron';
 // // import settings from 'electron-settings';
-// // import DeskreenApp from './main.dev';
+// // import EchoScreenApp from './main.dev';
 // // import initGlobals from './utils/mainProcessHelpers/initGlobals';
 // // import signalingServer from './server';
 // // import MenuBuilder from './menu';
 // // import i18n from './configs/i18next.config';
-// // import getDeskreenGlobal from './utils/mainProcessHelpers/getDeskreenGlobal';
+// // import getEchoScreenGlobal from './utils/mainProcessHelpers/getEchoScreenGlobal';
 // // import ConnectedDevicesService from './features/ConnectedDevicesService';
 // // import SharingSessionService from './features/SharingSessionService';
 // // import RendererWebrtcHelpersService from './features/PeerConnectionHelperRendererService';
@@ -61,7 +61,7 @@
 //     default: jest.requireActual('./main.dev').default,
 //   };
 // });
-// jest.mock('./utils/mainProcessHelpers/getDeskreenGlobal');
+// jest.mock('./utils/mainProcessHelpers/getEchoScreenGlobal');
 // jest.mock('./utils/mainProcessHelpers/initGlobals');
 // jest.mock('electron', () => {
 //   return {
@@ -134,7 +134,7 @@
 // });
 
 // describe('app main.dev tests', () => {
-//   let testApp: DeskreenApp;
+//   let testApp: EchoScreenApp;
 
 //   beforeEach(() => {
 //     jest.clearAllMocks();
@@ -144,10 +144,10 @@
 //     // @ts-ignore
 //     installExtensions.mockClear();
 
-//     testApp = new DeskreenApp();
+//     testApp = new EchoScreenApp();
 //   });
 
-//   describe('when DeskreenApp created properly', () => {
+//   describe('when EchoScreenApp created properly', () => {
 //     describe('when .start() was called', () => {
 //       it('should call initGlobals', () => {
 //         testApp.start();
@@ -430,7 +430,7 @@
 // //         describe('when ipcMain.on("main-window-onbeforeunload" callback was called', () => {
 // //           it('should reset globals', () => {
 // //             // @ts-ignore
-// //             getDeskreenGlobal.mockReturnValue(mockGlobal);
+// //             getEchoScreenGlobal.mockReturnValue(mockGlobal);
 
 // //             testApp.initIpcMain();
 
@@ -438,12 +438,12 @@
 // //             const callback = ipcMain.handle.mock.calls[3][1];
 // //             callback();
 
-// //             const deskreenGlobal = getDeskreenGlobal();
+// //             const echoscreenGlobal = getEchoScreenGlobal();
 
-// //             expect(deskreenGlobal.connectedDevicesService).not.toBe(
+// //             expect(echoscreenGlobal.connectedDevicesService).not.toBe(
 // //               TEST_CONNECTED_DEVICES_SERVICE
 // //             );
-// //             expect(deskreenGlobal.roomIDService).not.toBe(TEST_ROOM_ID_SERVICE);
+// //             expect(echoscreenGlobal.roomIDService).not.toBe(TEST_ROOM_ID_SERVICE);
 // //             testMapSharingSessions.forEach((s) => {
 // //               expect(s.denyConnectionForPartner).toBeCalled();
 // //               expect(s.destroy).toBeCalled();
@@ -453,7 +453,7 @@
 // //             });
 
 // //             expect(
-// //               deskreenGlobal.sharingSessionService
+// //               echoscreenGlobal.sharingSessionService
 // //                 .waitingForConnectionSharingSession
 // //             ).toBe(null);
 // //             expect(testMapHelpers.size).toBe(0);

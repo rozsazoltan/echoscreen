@@ -2,14 +2,14 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import uuid from 'uuid';
 import RoomIDService from '../../server/RoomIDService';
-import DeskreenCrypto from '../../utils/crypto';
+import EchoScreenCrypto from '../../utils/crypto';
 import ConnectedDevicesService from '../ConnectedDevicesService';
 import RendererWebrtcHelpersService from '../PeerConnectionHelperRendererService';
 import SharingSession from './SharingSession';
 import SharingSessionStatusEnum from './SharingSessionStatusEnum';
 
 export default class SharingSessionService {
-  crypto: DeskreenCrypto;
+  crypto: EchoScreenCrypto;
   user: LocalPeerUser | null;
   sharingSessions: Map<string, SharingSession>;
   waitingForConnectionSharingSession: SharingSession | null;
@@ -26,7 +26,7 @@ export default class SharingSessionService {
     this.roomIDService = _roomIDService;
     this.connectedDevicesService = _connectedDevicesService;
     this.rendererWebrtcHelpersService = _rendererWebrtcHelpersService;
-    this.crypto = new DeskreenCrypto();
+    this.crypto = new EchoScreenCrypto();
     this.waitingForConnectionSharingSession = null;
     this.sharingSessions = new Map<string, SharingSession>();
     this.user = null;

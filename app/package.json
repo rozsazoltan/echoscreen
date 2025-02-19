@@ -1,8 +1,8 @@
 {
-  "name": "deskreen",
-  "productName": "Deskreen",
+  "name": "echoscreen",
+  "productName": "EchoScreen",
   "version": "3.0.0",
-  "description": "Deskreen turns any device into a secondary screen for your computer",
+  "description": "EchoScreen turns any device into a secondary screen for your computer",
   "main": "./main.prod.js",
   "author": {
     "name": "Rózsa Zoltán",

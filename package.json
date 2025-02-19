@@ -1,8 +1,8 @@
 {
-  "name": "deskreen",
-  "productName": "Deskreen",
+  "name": "echoscreen",
+  "productName": "EchoScreen",
   "version": "3.0.0",
-  "description": "Deskreen turns any device into a secondary screen for your computer",
+  "description": "EchoScreen turns any device into a secondary screen for your computer",
   "scripts": {
     "build": "yarn build-client && yarn build-main && yarn build-renderer",
     "build-test": "yarn build-main-test && yarn build-renderer-test && yarn build-client",
@@ -69,8 +69,8 @@
     ]
   },
   "build": {
-    "productName": "Deskreen",
-    "appId": "com.rozsazoltan.deskreen",
+    "productName": "EchoScreen",
+    "appId": "com.rozsazoltan.echoscreen",
     "copyright": "Copyright © 2025-present Rózsa Zoltán",
     "files": [
       "dist/",
@@ -122,13 +122,13 @@
     "publish": {
       "provider": "github",
       "owner": "rozsazoltan",
-      "repo": "deskreen",
+      "repo": "echoscreen",
       "private": false
     }
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rozsazoltan/deskreen.git"
+    "url": "git+https://github.com/rozsazoltan/echoscreen.git"
   },
   "author": {
     "name": "Rózsa Zoltán",
@@ -142,7 +142,7 @@
   ],
   "license": "AGPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/rozsazoltan/deskreen/issues"
+    "url": "https://github.com/rozsazoltan/echoscreen/issues"
   },
   "keywords": [
     "electron",
@@ -155,7 +155,7 @@
     "hot",
     "reload"
   ],
-  "homepage": "https://github.com/rozsazoltan/deskreen#readme",
+  "homepage": "https://github.com/rozsazoltan/echoscreen#readme",
   "jest": {
     "testURL": "http://localhost/",
     "coveragePathIgnorePatterns": [

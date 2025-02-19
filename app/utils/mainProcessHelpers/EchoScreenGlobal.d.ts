@@ -4,7 +4,7 @@ import RendererWebrtcHelpersService from '../../features/PeerConnectionHelperRen
 import RoomIDService from '../../server/RoomIDService';
 import DesktopCapturerSourcesService from '../../features/DesktopCapturerSourcesService';
 
-interface DeskreenGlobal {
+interface EchoScreenGlobal {
   appPath: string;
   rendererWebrtcHelpersService: RendererWebrtcHelpersService;
   roomIDService: RoomIDService;

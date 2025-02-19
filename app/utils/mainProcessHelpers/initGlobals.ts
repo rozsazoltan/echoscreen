@@ -4,24 +4,24 @@ import SharingSessionService from '../../features/SharingSessionService';
 import RendererWebrtcHelpersService from '../../features/PeerConnectionHelperRendererService';
 import RoomIDService from '../../server/RoomIDService';
 import DesktopCapturerSources from '../../features/DesktopCapturerSourcesService';
-import { DeskreenGlobal } from './DeskreenGlobal';
+import { EchoScreenGlobal } from './EchoScreenGlobal';
 
 export default (appPath: string) => {
-  const deskreenGlobal: DeskreenGlobal = (global as unknown) as DeskreenGlobal;
+  const echoscreenGlobal: EchoScreenGlobal = (global as unknown) as EchoScreenGlobal;
 
-  deskreenGlobal.appPath = appPath;
+  echoscreenGlobal.appPath = appPath;
 
-  deskreenGlobal.rendererWebrtcHelpersService = new RendererWebrtcHelpersService(
+  echoscreenGlobal.rendererWebrtcHelpersService = new RendererWebrtcHelpersService(
     appPath
   );
-  deskreenGlobal.roomIDService = new RoomIDService();
-  deskreenGlobal.connectedDevicesService = new ConnectedDevicesService();
-  deskreenGlobal.sharingSessionService = new SharingSessionService(
-    deskreenGlobal.roomIDService,
-    deskreenGlobal.connectedDevicesService,
-    deskreenGlobal.rendererWebrtcHelpersService
+  echoscreenGlobal.roomIDService = new RoomIDService();
+  echoscreenGlobal.connectedDevicesService = new ConnectedDevicesService();
+  echoscreenGlobal.sharingSessionService = new SharingSessionService(
+    echoscreenGlobal.roomIDService,
+    echoscreenGlobal.connectedDevicesService,
+    echoscreenGlobal.rendererWebrtcHelpersService
   );
-  deskreenGlobal.desktopCapturerSourcesService = new DesktopCapturerSources();
-  deskreenGlobal.latestAppVersion = '';
-  deskreenGlobal.currentAppVersion = app.getVersion();
+  echoscreenGlobal.desktopCapturerSourcesService = new DesktopCapturerSources();
+  echoscreenGlobal.latestAppVersion = '';
+  echoscreenGlobal.currentAppVersion = app.getVersion();
 };

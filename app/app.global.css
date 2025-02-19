@@ -300,8 +300,8 @@ div.class-allow-device-to-connect-alert
   }
 }
 
-/* TODO: move it to DeskreenStepper.css ! */
-#step-label-deskreen > span.MuiStepLabel-labelContainer > span {
+/* TODO: move it to EchoScreenStepper.css ! */
+#step-label-echoscreen > span.MuiStepLabel-labelContainer > span {
   margin-top: 8px;
 }
 
