@@ -6,6 +6,7 @@ export default {
   languages: [
     'ru',
     'en',
+    'hu',
     'es',
     'ua',
     'zh_CN',
@@ -22,6 +23,7 @@ export default {
   ],
   langISOKeyToLangFullNameMap: {
     en: 'English',
+    hu: 'Magyar',
     es: 'Español',
     ru: 'Русский',
     ua: 'Українська',
