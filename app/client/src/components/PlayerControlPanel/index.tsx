@@ -130,41 +130,6 @@ function PlayerControlPanel(props: PlayerControlPanelProps) {
                 </Row>
               </Button>
             </Tooltip>
-            <Tooltip
-              content={t(
-                'If you like Deskreen consider contributing financially Deskreen is open-source Your donations keep us motivated to make Deskreen even better'
-              )}
-              position={Position.BOTTOM}
-            >
-              <Button
-                style={{ borderRadius: '100px' }}
-                onClick={() => {
-                  window.open('https://www.patreon.com/deskreen', '_blank');
-                }}
-              >
-                <Row start="xs">
-                  <Col xs>
-                    <img
-                      src={RedHeartTwemojiPNG}
-                      width={16}
-                      height={16}
-                      style={{ transform: 'translateY(2px)' }}
-                      alt="heart"
-                    />
-                  </Col>
-                  <Col xs>
-                    <div
-                      style={{
-                        transform: 'translateY(2px) translateX(-5px)',
-                        width: 'max-content',
-                      }}
-                    >
-                      <Text>{t('Donate')}</Text>
-                    </div>
-                  </Col>
-                </Row>
-              </Button>
-            </Tooltip>
           </Col>
           <Col xs={12} md={5}>
             <Row center="xs" style={{ height: '42px' }}>

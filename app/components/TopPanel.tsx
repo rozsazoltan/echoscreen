@@ -78,48 +78,7 @@ export default function TopPanel(props: any) {
     setIsConnectedDevicesDrawerOpen(!isConnectedDevicesDrawerOpen);
   }, [isConnectedDevicesDrawerOpen]);
 
-  const donateTooltipContent = t(
-    'If you like Deskreen consider contributing financially Deskreen is open-source Your donations keep us motivated to make Deskreen even better'
-  );
   const deskreenButtonTooltip = t('Click to visit our website');
-
-  const renderDonateButton = useCallback(() => {
-    return (
-      <Tooltip content={donateTooltipContent} position={Position.BOTTOM}>
-        <Button
-          style={{
-            marginRight: '10px',
-            borderRadius: '100px',
-          }}
-          onClick={() => {
-            shell.openExternal('https://www.patreon.com/deskreen');
-          }}
-        >
-          <Row start="xs">
-            <Col xs>
-              <img
-                src={RedHeartTwemojiPNG}
-                width={16}
-                height={16}
-                style={{ transform: 'translateY(2px)' }}
-                alt="heart"
-              />
-            </Col>
-            <Col xs>
-              <div
-                style={{
-                  transform: 'translateY(2px) translateX(-5px)',
-                  width: 'max-content',
-                }}
-              >
-                <Text>{t('Donate')}</Text>
-              </div>
-            </Col>
-          </Row>
-        </Button>
-      </Tooltip>
-    );
-  }, [donateTooltipContent, t]);
 
   const renderConnectedDevicesListButton = useCallback(() => {
     return (
@@ -224,7 +183,6 @@ export default function TopPanel(props: any) {
           center="xs"
           style={{ width: '100%', transform: 'translateX(-50px)' }}
         >
-          <Col>{renderDonateButton()}</Col>
           <Col>{renderLogoWithAppName()}</Col>
         </Row>
         <div className={getClassesCallback().topPanelControlButtonsRoot}>

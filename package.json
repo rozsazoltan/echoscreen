@@ -131,15 +131,13 @@
     "url": "git+https://github.com/pavlobu/deskreen.git"
   },
   "author": {
-    "name": "Pavlo (Paul) Buidenkov",
-    "email": "pavlobu@gmail.com",
-    "url": "https://github.com/pavlobu"
+    "name": "Rózsa Zoltán",
+    "url": "https://github.com/rozsazoltan"
   },
   "contributors": [
     {
-      "name": "Pavlo (Paul) Buidenkov",
-      "email": "pavlobu@gmail.com",
-      "url": "https://github.com/pavlobu"
+      "name": "Rózsa Zoltán",
+      "url": "https://github.com/rozsazoltan"
     }
   ],
   "license": "AGPL-3.0-or-later",
