@@ -22,7 +22,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import FullScreenEnter from '../../images/fullscreen_24px.svg';
 import FullScreenExit from '../../images/fullscreen_exit-24px.svg';
-import RedHeartTwemojiPNG from '../../images/red_heart_2764_twemoji_120x120.png';
+// import RedHeartTwemojiPNG from '../../images/red_heart_2764_twemoji_120x120.png';
 import { Col, Row } from 'react-flexbox-grid';
 import screenfull from 'screenfull';
 import { VideoQuality } from '../../features/VideoAutoQualityOptimizer/VideoQualityEnum';

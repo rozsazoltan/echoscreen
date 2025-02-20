@@ -12,7 +12,7 @@ import ConnectedDevicesListDrawer from './ConnectedDevicesListDrawer';
 import { SettingsContext } from '../containers/SettingsProvider';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore fine import here
-import RedHeartTwemojiPNG from '../images/red_heart_2764_twemoji_120x120.png';
+// import RedHeartTwemojiPNG from '../images/red_heart_2764_twemoji_120x120.png';
 
 const useStylesWithTheme = (isDarkTheme: boolean) =>
   makeStyles(() =>
