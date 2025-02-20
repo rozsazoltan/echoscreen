@@ -11,7 +11,8 @@ name: release all os -- no code signing
 
 jobs:
   create-release:
-    runs-on: ubuntu-18.04
+    # https://stackoverflow.com/questions/70959954/error-waiting-for-a-runner-to-pick-up-this-job-using-github-actions
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2.3.1
@@ -33,11 +34,12 @@ jobs:
     strategy:
       matrix:
         include:
-          - os: ubuntu-18.04 # IMPORTANT!!! this LINUX os should be the same as in build-and-test and covecov workflows! this is for making sure caches are used in most efficient way
+          # https://stackoverflow.com/questions/70959954/error-waiting-for-a-runner-to-pick-up-this-job-using-github-actions
+          - os: ubuntu-latest
             artifact_name: 'release/{*.AppImage,*.rpm,*.deb,*.yml}'
           - os: windows-2019
             artifact_name: 'release/{*.msi,*.exe,*.blockmap,*.yml}'
-          - os: macos-10.15
+          - os: macos-latest
             artifact_name: 'release/{*.dmg,*.blockmap,*.yml}'
 
     steps:
