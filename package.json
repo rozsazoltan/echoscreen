@@ -132,11 +132,13 @@
   },
   "author": {
     "name": "Rózsa Zoltán",
+    "email": "rozsa.zoltan@c2.hu",
     "url": "https://github.com/rozsazoltan"
   },
   "contributors": [
     {
       "name": "Rózsa Zoltán",
+      "email": "rozsa.zoltan@c2.hu",
       "url": "https://github.com/rozsazoltan"
     }
   ],
