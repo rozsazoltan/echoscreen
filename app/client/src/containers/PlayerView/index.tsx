@@ -1,5 +1,5 @@
 import { Position, Toaster } from '@blueprintjs/core';
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useCallback } from 'react';
 import ReactPlayer from 'react-player';
 import screenfull from 'screenfull';
 import PlayerControlPanel from '../../components/PlayerControlPanel';
@@ -45,6 +45,14 @@ function PlayerView(props: PlayerViewProps) {
     },
   };
 
+  const toggleFullscreen = useCallback(() => {
+    if (!screenfull.isEnabled) return;
+    const playerElement = document.querySelector(`#${REACT_PLAYER_WRAPPER_ID}`);
+    if (!playerElement) return;
+    screenfull.request(playerElement);
+    setIsFullScreenOn(!isFullScreenOn);
+  }, []);
+
   return (
     <div
       style={{
@@ -59,13 +67,7 @@ function PlayerView(props: PlayerViewProps) {
       <PlayerControlPanel
         onSwitchChangedCallback={(isEnabled) => setIsWithControls(isEnabled)}
         isDefaultPlayerTurnedOn={isWithControls}
-        handleClickFullscreen={() => {
-          if (!screenfull.isEnabled) return;
-          const playerElement = document.querySelector(`#${REACT_PLAYER_WRAPPER_ID}`);
-          if (!playerElement) return;
-          screenfull.request(playerElement);
-          setIsFullScreenOn(!isFullScreenOn);
-        }}
+        handleClickFullscreen={() => toggleFullscreen()}
         handleClickPlayPause={handlePlayPause}
         isPlaying={isPlaying}
         setVideoQuality={setVideoQuality}
@@ -87,6 +89,7 @@ function PlayerView(props: PlayerViewProps) {
             position: 'relative',
             paddingTop: '56.25%',
           }}
+          onMouseDown={() => toggleFullscreen()}
         >
           <ReactPlayer
             ref={player}

@@ -32,7 +32,6 @@ import ScreenSharingSource from '../../features/PeerConnection/ScreenSharingSour
 import { REACT_PLAYER_WRAPPER_ID } from '../../constants/appConstants';
 import './index.css'
 
-
 const videoQualityButtonStyle: React.CSSProperties = {
   width: '100%',
   textAlign: 'center',
