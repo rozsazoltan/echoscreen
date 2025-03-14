@@ -51,7 +51,7 @@ function PlayerView(props: PlayerViewProps) {
     if (!playerElement) return;
     screenfull.request(playerElement);
     setIsFullScreenOn(!isFullScreenOn);
-  }, [])
+  }, []);
 
   return (
     <div
