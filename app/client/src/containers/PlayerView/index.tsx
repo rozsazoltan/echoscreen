@@ -1,5 +1,5 @@
 import { Position, Toaster } from '@blueprintjs/core';
-import React, { useRef, useState, useCallback } from 'react';
+import React, { useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
 import screenfull from 'screenfull';
 import PlayerControlPanel from '../../components/PlayerControlPanel';
@@ -45,13 +45,13 @@ function PlayerView(props: PlayerViewProps) {
     },
   };
 
-  const toggleFullscreen = useCallback(() => {
+  const toggleFullscreen = () => {
     if (!screenfull.isEnabled) return;
     const playerElement = document.querySelector(`#${REACT_PLAYER_WRAPPER_ID}`);
     if (!playerElement) return;
     screenfull.request(playerElement);
     setIsFullScreenOn(!isFullScreenOn);
-  }, []);
+  };
 
   return (
     <div
