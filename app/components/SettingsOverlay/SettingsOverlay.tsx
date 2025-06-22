@@ -129,7 +129,7 @@ export default function SettingsOverlay(props: SettingsOverlayProps) {
         </Col>
         <Col xs={12}>
           <Text>
-            {`${t('Version')}: ${currentVersion} (${currentVersion})`}
+            {`${t('Version')}: ${currentVersion}`}
           </Text>
         </Col>
         <Col xs={12}>
