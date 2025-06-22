@@ -13,7 +13,6 @@ import {
   Tab,
   Icon,
   Text,
-  Checkbox,
 } from '@blueprintjs/core';
 import { useTranslation } from 'react-i18next';
 import { Col, Row } from 'react-flexbox-grid';
@@ -29,6 +28,8 @@ import isWithReactRevealAnimations from '../../utils/isWithReactRevealAnimations
 import config from '../../api/config';
 import LanguageSelector from '../LanguageSelector';
 import ToggleThemeBtnGroup from '../ToggleThemeBtnGroup';
+import ToggleAutomaticUpdatesBtnGroup from '../ToggleAutomaticUpdatesBtnGroup';
+import ToggleAutomaticConnectBtnGroup from '../ToggleAutomaticConnectBtnGroup';
 
 const { port } = config;
 
@@ -83,16 +84,6 @@ export default function SettingsOverlay(props: SettingsOverlayProps) {
 
   const getClassesCallback = useStylesWithTheme(isDarkTheme);
 
-  const getAutomaticUpdatesCheckboxInput = () => {
-    return (
-      <Checkbox
-        disabled
-        className={getClassesCallback().checkboxSettings}
-        label={t('Disabled')}
-      />
-    );
-  };
-
   const GeneralSettingsPanel: React.FC = () => (
     <>
       <Row middle="xs">
@@ -111,7 +102,25 @@ export default function SettingsOverlay(props: SettingsOverlayProps) {
       <SettingRowLabelAndInput
         icon="automatic-updates"
         label={t('Automatic Updates')}
-        input={getAutomaticUpdatesCheckboxInput()}
+        input={<ToggleAutomaticUpdatesBtnGroup />}
+      />
+    </>
+  );
+
+  const ServerSettingsPanel: React.FC = () => (
+    <>
+      <Row middle="xs">
+        <H3 className="bp3-text-muted">{t('Server Settings')}</H3>
+      </Row>
+      <SettingRowLabelAndInput
+        icon="cell-tower"
+        label={t('Port')}
+        input="123456"
+      />
+      <SettingRowLabelAndInput
+        icon="feed-subscribed"
+        label={t('Automatic Connect')}
+        input={<ToggleAutomaticConnectBtnGroup />}
       />
     </>
   );
@@ -216,6 +225,18 @@ export default function SettingsOverlay(props: SettingsOverlayProps) {
     );
   };
 
+  const getTabNavServerSettingsButton = () => {
+    return (
+      <Row middle="xs" className={getClassesCallback().tabNavigationRowButton}>
+        <Icon
+          icon="wrench"
+          className={getClassesCallback().iconInTablLeftButton}
+        />
+        <Text className="bp3-text-large">{t('Server')}</Text>
+      </Row>
+    );
+  };
+
   const getTabNavAboutButton = () => {
     return (
       <Row middle="xs" className={getClassesCallback().tabNavigationRowButton}>
@@ -284,6 +305,9 @@ export default function SettingsOverlay(props: SettingsOverlayProps) {
             >
               <Tab id="rx" title="" panel={<GeneralSettingsPanel />}>
                 {getTabNavGeneralSettingsButton()}
+              </Tab>
+              <Tab id="ss" title="" panel={<ServerSettingsPanel />}>
+                {getTabNavServerSettingsButton()}
               </Tab>
               <Tab id="ng" disabled title="" panel={<SecurityPanel />}>
                 {getTabNavSecurityButton()}

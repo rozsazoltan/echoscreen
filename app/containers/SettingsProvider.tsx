@@ -11,8 +11,12 @@ export const DARK_UI_BACKGROUND = '#293742';
 interface SettingsContextInterface {
   isDarkTheme: boolean;
   currentLanguage: string;
+  shouldAutomaticUpdates: boolean;
+  shouldAutomaticConnect: boolean;
   setIsDarkThemeHook: (val: boolean) => void;
   setCurrentLanguageHook: (newLang: string) => void;
+  setShouldAutomaticUpdatesHook: (val: boolean) => void;
+  setShouldAutomaticConnectHook: (val: boolean) => void;
 }
 
 const defaultSettingsContextValue = {
@@ -20,6 +24,10 @@ const defaultSettingsContextValue = {
   setIsDarkThemeHook: () => {},
   setCurrentLanguageHook: () => {},
   currentLanguage: 'en',
+  shouldAutomaticUpdates: false,
+  setShouldAutomaticUpdatesHook: () => {},
+  shouldAutomaticConnect: false,
+  setShouldAutomaticConnectHook: () => {},
 };
 
 export const SettingsContext = React.createContext<SettingsContextInterface>(
@@ -29,6 +37,8 @@ export const SettingsContext = React.createContext<SettingsContextInterface>(
 export const SettingsProvider: React.FC = ({ children }) => {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
   const [currentLanguage, setCurrentLanguage] = useState('en');
+  const [shouldAutomaticUpdates, setShouldAutomaticUpdates] = useState(false);
+  const [shouldAutomaticConnect, setShouldAutomaticConnect] = useState(false);
 
   const loadDarkThemeFromSettings = async () => {
     const isDarkAppTheme = await ipcRenderer.invoke(
@@ -56,11 +66,25 @@ export const SettingsProvider: React.FC = ({ children }) => {
     setCurrentLanguage(newLang);
   };
 
+  const setShouldAutomaticUpdatesHook = (shouldAutomaticUpdates: boolean) => {
+    ipcRenderer.invoke(IpcEvents.SetShouldAutomaticUpdates, shouldAutomaticUpdates);
+    setShouldAutomaticUpdates(shouldAutomaticUpdates);
+  };
+
+  const setShouldAutomaticConnectHook = (shouldAutomaticConnect: boolean) => {
+    ipcRenderer.invoke(IpcEvents.SetShouldAutomaticConnect, shouldAutomaticConnect);
+    setShouldAutomaticConnect(shouldAutomaticConnect);
+  };
+
   const value = {
     isDarkTheme,
     setIsDarkThemeHook,
     currentLanguage,
     setCurrentLanguageHook,
+    shouldAutomaticUpdates,
+    setShouldAutomaticUpdatesHook,
+    shouldAutomaticConnect,
+    setShouldAutomaticConnectHook,
   };
 
   return (

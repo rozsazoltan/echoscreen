@@ -151,5 +151,9 @@
   "Open App Window": "Open App Window",
   "Minimize To Tray": "Minimize To Tray",
   "Show Connected Devices": "Show Connected Devices",
-  "Quit EchoScreen": "Quit EchoScreen"
+  "Quit EchoScreen": "Quit EchoScreen",
+  "Server": "Server",
+  "Server Settings": "Server Settings",
+  "Port": "Port",
+  "Automatic Connect": "Automatic Connect"
 }

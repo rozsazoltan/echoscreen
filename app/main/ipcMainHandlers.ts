@@ -322,6 +322,20 @@ export default function initIpcMainHandlers(mainWindow: BrowserWindow) {
     return 'en';
   });
 
+  ipcMain.handle(IpcEvents.SetShouldAutomaticUpdates, (_, ShouldAutomaticUpdates) => {
+    if (store.has(ElectronStoreKeys.ShouldAutomaticUpdates)) {
+      store.delete(ElectronStoreKeys.ShouldAutomaticUpdates);
+    }
+    store.set(ElectronStoreKeys.ShouldAutomaticUpdates, ShouldAutomaticUpdates);
+  });
+
+  ipcMain.handle(IpcEvents.SetShouldAutomaticConnect, (_, ShouldAutomaticConnect) => {
+    if (store.has(ElectronStoreKeys.ShouldAutomaticConnect)) {
+      store.delete(ElectronStoreKeys.ShouldAutomaticConnect);
+    }
+    store.set(ElectronStoreKeys.ShouldAutomaticConnect, ShouldAutomaticConnect);
+  });
+
   ipcMain.handle(IpcEvents.DestroySharingSessionById, (_, id) => {
     const sharingSession = getEchoScreenGlobal().sharingSessionService.sharingSessions.get(
       id

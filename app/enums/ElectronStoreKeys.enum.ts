@@ -3,4 +3,6 @@ export enum ElectronStoreKeys {
   AppLanguage = 'appLanguage',
   IsNotFirstTimeAppStart = 'isNotFirstTimeAppStart',
   IsAppDarkTheme = 'isAppDarkTheme',
+  ShouldAutomaticUpdates = 'shouldAutomaticUpdates',
+  ShouldAutomaticConnect = 'shouldAutomaticConnect',
 }
