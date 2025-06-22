@@ -145,7 +145,9 @@ class EchoScreenSignalingServer {
 
   callListenOnHttpServer() {
     return this.server.listen(this.port, () => {
-      this.log.info(`EchoScreen signaling server is online at port ${this.port}`);
+      this.log.info(
+        `EchoScreen signaling server is online at port ${this.port}`
+      );
     });
   }
 

@@ -2,12 +2,7 @@
 import { clipboard, ipcRenderer } from 'electron';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import {
-  Button,
-  Text,
-  Tooltip,
-  Position,
-} from '@blueprintjs/core';
+import { Button, Text, Tooltip, Position } from '@blueprintjs/core';
 import isProduction from '../../utils/isProduction';
 import config from '../../api/config';
 import { IpcEvents } from '../../main/IpcEvents.enum';
