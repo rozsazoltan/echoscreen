@@ -245,7 +245,8 @@ export default function initIpcMainHandlers(mainWindow: BrowserWindow) {
   );
 
   ipcMain.handle(IpcEvents.GetPendingConnectionDevice, () => {
-    return getEchoScreenGlobal().connectedDevicesService.pendingConnectionDevice;
+    return getEchoScreenGlobal().connectedDevicesService
+      .pendingConnectionDevice;
   });
 
   ipcMain.handle(IpcEvents.GetWaitingForConnectionSharingSessionRoomId, () => {

@@ -261,7 +261,9 @@ export default function SettingsOverlay(props: SettingsOverlayProps) {
                 id="new-version-header"
                 onClick={(e) => {
                   e.preventDefault();
-                  shell.openExternal('https://github.com/rozsazoltan/echoscreen');
+                  shell.openExternal(
+                    'https://github.com/rozsazoltan/echoscreen'
+                  );
                 }}
                 style={{
                   width: 'calc(100% - 50px)',

@@ -209,7 +209,9 @@ export default class MenuBuilder {
         {
           label: this.i18n.t('Search Issues'),
           click() {
-            shell.openExternal('https://github.com/rozsazoltan/echoscreen/issues');
+            shell.openExternal(
+              'https://github.com/rozsazoltan/echoscreen/issues'
+            );
           },
         },
       ],
