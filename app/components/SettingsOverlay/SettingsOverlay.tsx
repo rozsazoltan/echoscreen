@@ -143,7 +143,7 @@ export default function SettingsOverlay(props: SettingsOverlayProps) {
                 isDarkTheme
                   ? {}
                   : {
-                      color: 'blue',
+                      color: '#00a6f4',
                     }
               }
             >
@@ -162,7 +162,7 @@ export default function SettingsOverlay(props: SettingsOverlayProps) {
                 isDarkTheme
                   ? {}
                   : {
-                      color: 'blue',
+                      color: '#00a6f4',
                     }
               }
             >
