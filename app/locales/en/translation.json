@@ -151,5 +151,11 @@
   "Open App Window": "Open App Window",
   "Minimize To Tray": "Minimize To Tray",
   "Show Connected Devices": "Show Connected Devices",
-  "Quit EchoScreen": "Quit EchoScreen"
+  "Quit EchoScreen": "Quit EchoScreen",
+  "A new stable version of EchoScreen is available! Using the latest version ensures better performance, new features, and important security fixes": {
+    "": "A new stable version of EchoScreen is available! Using the latest version ensures better performance, new features, and important security fixes."
+  },
+  "v{{version}}": "v{{version}}",
+  "Update Now": "Update Now",
+  "Later": "Later"
 }

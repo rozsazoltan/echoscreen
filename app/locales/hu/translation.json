@@ -27,9 +27,9 @@
   "Connect": "Csatlakozás",
   "Select": "Kiválasztás",
   "Confirm": "Megerősítés",
-  "Scan the QR code": "Szkennelje be a QR kódot",
-  "Make sure your computer and screen viewing device are connected to same Wi-Fi": "Győződjön meg róla, hogy a számítógépe és a képernyőt néző eszköze ugyanahhoz a Wi-Fi-hez csatlakozik",
-  "Or type the following address in browser address bar on any device": "Vagy írja be a következő címet a böngésző címsorába bármelyik eszközön",
+  "Scan the QR code": "Szkenneld be a QR kódot",
+  "Make sure your computer and screen viewing device are connected to same Wi-Fi": "Ellenőrizd, hogy a számítógéped és a képernyőt néző eszköz ugyanahhoz a Wi-Fi-hez csatlakozik",
+  "Or type the following address in browser address bar on any device": "Vagy írd be a következő címet a böngésző címsorába bármelyik eszközön",
   "Someone is trying to connect, do you allow?": "Valaki próbál csatlakozni, engedélyezed?",
   "Click to make bigger": "Kattints a nagyításhoz",
   "Click to copy": "Kattints a másoláshoz",
@@ -151,5 +151,11 @@
   "Open App Window": "Alkalmazás ablak megnyitása",
   "Minimize To Tray": "Minimalizálás a tálcára",
   "Show Connected Devices": "Csatlakoztatott eszközök megjelenítése",
-  "Quit EchoScreen": "Kilépés a EchoScreen-ből"
+  "Quit EchoScreen": "Kilépés a EchoScreen-ből",
+  "A new stable version of EchoScreen is available! Using the latest version ensures better performance, new features, and important security fixes": {
+    "": "Elérhető az EchoScreen egy új stabil verziója! Az új verzió használata jobb teljesítményt, új funkciókat és fontos biztonsági javításokat biztosít."
+  },
+  "v{{version}}": "v{{version}}",
+  "Update Now": "Frissítés most",
+  "Later": "Később"
 }

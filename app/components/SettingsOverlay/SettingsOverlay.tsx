@@ -1,14 +1,13 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { ipcRenderer, shell } from 'electron';
-import React, { useContext, useEffect, useState } from 'react';
+import { shell } from 'electron';
+import React, { useContext } from 'react';
 import {
   Overlay,
   Classes,
   H3,
   H6,
-  H4,
   Tabs,
   Tab,
   Icon,
@@ -16,6 +15,7 @@ import {
   Checkbox,
 } from '@blueprintjs/core';
 import { useTranslation } from 'react-i18next';
+import useAppVersions from '../../hooks/useAppVersions';
 import { Col, Row } from 'react-flexbox-grid';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import {
@@ -59,27 +59,9 @@ export default function SettingsOverlay(props: SettingsOverlayProps) {
 
   const { handleClose, isSettingsOpen } = props;
 
-  const [latestVersion, setLatestVersion] = useState('');
-  const [currentVersion, setCurrentVersion] = useState('');
+  const { currentVersion } = useAppVersions();
 
   const { isDarkTheme } = useContext(SettingsContext);
-
-  useEffect(() => {
-    const getLatestVersion = async () => {
-      const gotLatestVersion = await ipcRenderer.invoke('get-latest-version');
-      if (gotLatestVersion !== '') {
-        setLatestVersion(gotLatestVersion);
-      }
-    };
-    getLatestVersion();
-    const getCurrentVersion = async () => {
-      const gotCurrentVersion = await ipcRenderer.invoke('get-current-version');
-      if (gotCurrentVersion !== '') {
-        setCurrentVersion(gotCurrentVersion);
-      }
-    };
-    getCurrentVersion();
-  }, []);
 
   const getClassesCallback = useStylesWithTheme(isDarkTheme);
 
@@ -147,7 +129,7 @@ export default function SettingsOverlay(props: SettingsOverlayProps) {
         </Col>
         <Col xs={12}>
           <Text>
-            {`${t('Version')}: ${currentVersion} (${currentVersion})`}
+            {`${t('Version')}: ${currentVersion}`}
           </Text>
         </Col>
         <Col xs={12}>
@@ -161,7 +143,8 @@ export default function SettingsOverlay(props: SettingsOverlayProps) {
                 isDarkTheme
                   ? {}
                   : {
-                      color: 'blue',
+                      color: '#00a6f4',
+                      fontWeight: 700,
                     }
               }
             >
@@ -180,7 +163,8 @@ export default function SettingsOverlay(props: SettingsOverlayProps) {
                 isDarkTheme
                   ? {}
                   : {
-                      color: 'blue',
+                      color: '#00a6f4',
+                      fontWeight: 700,
                     }
               }
             >
@@ -194,7 +178,7 @@ export default function SettingsOverlay(props: SettingsOverlayProps) {
 
   const getTabNavSecurityButton = () => {
     return (
-      <Row middle="xs" className={getClassesCallback().tabNavigationRowButton}>
+      <Row middle="xs" className={getClassesCallback().tabNavigationRowButton} style={{ padding: '0 .2rem' }}>
         <Icon
           icon="shield"
           className={getClassesCallback().iconInTablLeftButton}
@@ -206,7 +190,7 @@ export default function SettingsOverlay(props: SettingsOverlayProps) {
 
   const getTabNavGeneralSettingsButton = () => {
     return (
-      <Row middle="xs" className={getClassesCallback().tabNavigationRowButton}>
+      <Row middle="xs" className={getClassesCallback().tabNavigationRowButton} style={{ padding: '0 .2rem' }}>
         <Icon
           icon="wrench"
           className={getClassesCallback().iconInTablLeftButton}
@@ -218,7 +202,7 @@ export default function SettingsOverlay(props: SettingsOverlayProps) {
 
   const getTabNavAboutButton = () => {
     return (
-      <Row middle="xs" className={getClassesCallback().tabNavigationRowButton}>
+      <Row middle="xs" className={getClassesCallback().tabNavigationRowButton} style={{ padding: '0 .2rem' }}>
         <Icon
           icon="info-sign"
           className={getClassesCallback().iconInTablLeftButton}
@@ -254,29 +238,6 @@ export default function SettingsOverlay(props: SettingsOverlayProps) {
               onClick={handleClose}
               isDefaultStyles
             />
-            {latestVersion !== '' &&
-            currentVersion !== '' &&
-            latestVersion !== currentVersion ? (
-              <H4
-                id="new-version-header"
-                onClick={(e) => {
-                  e.preventDefault();
-                  shell.openExternal(
-                    'https://github.com/rozsazoltan/echoscreen'
-                  );
-                }}
-                style={{
-                  width: 'calc(100% - 50px)',
-                }}
-              >
-                {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
-                {`${t(
-                  'A new version of EchoScreen is available! Click to download new version'
-                )} ${latestVersion}`}
-              </H4>
-            ) : (
-              <></>
-            )}
             <Tabs
               animate
               id="TabsExample"

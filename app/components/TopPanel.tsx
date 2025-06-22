@@ -3,7 +3,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { shell } from 'electron';
 import React, { useCallback, useContext } from 'react';
-import { Button, Text, Icon, Position, Tooltip } from '@blueprintjs/core';
+import { Button, Icon, Position, Tooltip } from '@blueprintjs/core';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import { Col, Row } from 'react-flexbox-grid';
 import { useTranslation } from 'react-i18next';

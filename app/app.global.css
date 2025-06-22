@@ -257,6 +257,7 @@ div.class-allow-device-to-connect-alert
 #settings-overlay-inner > div > div.bp3-tab-list {
   background-color: rgba(0, 0, 0, 0.1);
   padding: 8px;
+  border-radius: 0.4rem;
 }
 
 /* settings inner 100% height regardless tab content height */
@@ -429,18 +430,6 @@ a {
 a:hover {
   opacity: 1;
   text-decoration: none;
-  cursor: pointer;
-}
-
-#new-version-header {
-  background: rgba(0, 255, 54, 0.48);
-  width: fit-content;
-  border-radius: 100px;
-  padding: 5px;
-}
-
-#new-version-header:hover {
-  background: rgba(0, 255, 54, 0.78);
   cursor: pointer;
 }
 

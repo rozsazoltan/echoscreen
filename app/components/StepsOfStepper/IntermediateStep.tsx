@@ -81,7 +81,7 @@ export default function IntermediateStep(props: IntermediateStepProps) {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        height: '260px',
+        height: '160px',
         width: '100%',
       }}
     >
@@ -92,25 +92,6 @@ export default function IntermediateStep(props: IntermediateStepProps) {
         handleNextApplicationWindow,
         connectedDevice
       )}
-      {
-        // eslint-disable-next-line no-nested-ternary
-        process.env.NODE_ENV === 'production' &&
-        process.env.RUN_MODE !== 'dev' &&
-        process.env.RUN_MODE !== 'test' ? (
-          <></>
-        ) : activeStep === 0 ? (
-          // eslint-disable-next-line react/jsx-indent
-          <Button
-            onClick={() => {
-              // connectedDevicesService.setPendingConnectionDevice(DEVICES[Math.floor(Math.random() * DEVICES.length)]);
-            }}
-          >
-            Connect Test Device
-          </Button>
-        ) : (
-          <></>
-        )
-      }
       {activeStep !== 0 ? (
         <Row>
           <Col xs={12}>

@@ -35,7 +35,7 @@ export default function SettingRowLabelAndInput(
 
   return (
     <Row middle="xs" between="xs">
-      <Col xs={6}>
+      <Col xs={8}>
         <Row middle="xs" className={getClassesCallback().oneSettingRow}>
           <Col>
             <Icon
@@ -51,7 +51,7 @@ export default function SettingRowLabelAndInput(
           </Col>
         </Row>
       </Col>
-      <Col xs={6}>
+      <Col xs={4}>
         <Row>{input}</Row>
       </Col>
     </Row>
