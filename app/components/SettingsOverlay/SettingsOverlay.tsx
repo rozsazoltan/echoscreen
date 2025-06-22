@@ -178,7 +178,7 @@ export default function SettingsOverlay(props: SettingsOverlayProps) {
 
   const getTabNavSecurityButton = () => {
     return (
-      <Row middle="xs" className={getClassesCallback().tabNavigationRowButton}>
+      <Row middle="xs" className={getClassesCallback().tabNavigationRowButton} style={{ padding: '0 .2rem' }}>
         <Icon
           icon="shield"
           className={getClassesCallback().iconInTablLeftButton}
@@ -190,7 +190,7 @@ export default function SettingsOverlay(props: SettingsOverlayProps) {
 
   const getTabNavGeneralSettingsButton = () => {
     return (
-      <Row middle="xs" className={getClassesCallback().tabNavigationRowButton}>
+      <Row middle="xs" className={getClassesCallback().tabNavigationRowButton} style={{ padding: '0 .2rem' }}>
         <Icon
           icon="wrench"
           className={getClassesCallback().iconInTablLeftButton}
@@ -202,7 +202,7 @@ export default function SettingsOverlay(props: SettingsOverlayProps) {
 
   const getTabNavAboutButton = () => {
     return (
-      <Row middle="xs" className={getClassesCallback().tabNavigationRowButton}>
+      <Row middle="xs" className={getClassesCallback().tabNavigationRowButton} style={{ padding: '0 .2rem' }}>
         <Icon
           icon="info-sign"
           className={getClassesCallback().iconInTablLeftButton}
