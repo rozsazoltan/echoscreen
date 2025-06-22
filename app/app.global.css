@@ -432,18 +432,6 @@ a:hover {
   cursor: pointer;
 }
 
-#new-version-header {
-  background: rgba(0, 255, 54, 0.48);
-  width: fit-content;
-  border-radius: 100px;
-  padding: 5px;
-}
-
-#new-version-header:hover {
-  background: rgba(0, 255, 54, 0.78);
-  cursor: pointer;
-}
-
 .bp3-tab-list {
   height: calc(100vh - 30%);
 }

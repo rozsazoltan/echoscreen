@@ -151,5 +151,11 @@
   "Open App Window": "Alkalmazás ablak megnyitása",
   "Minimize To Tray": "Minimalizálás a tálcára",
   "Show Connected Devices": "Csatlakoztatott eszközök megjelenítése",
-  "Quit EchoScreen": "Kilépés a EchoScreen-ből"
+  "Quit EchoScreen": "Kilépés a EchoScreen-ből",
+  "A new stable version of EchoScreen is available! Using the latest version ensures better performance, new features, and important security fixes": {
+    "": "Elérhető az EchoScreen egy új stabil verziója! Az új verzió használata jobb teljesítményt, új funkciókat és fontos biztonsági javításokat biztosít."
+  },
+  "v{{version}}": "v{{version}}",
+  "Update Now": "Frissítés most",
+  "Later": "Később"
 }
