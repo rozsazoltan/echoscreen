@@ -144,6 +144,7 @@ export default function SettingsOverlay(props: SettingsOverlayProps) {
                   ? {}
                   : {
                       color: '#00a6f4',
+                      fontWeight: 700,
                     }
               }
             >
@@ -163,6 +164,7 @@ export default function SettingsOverlay(props: SettingsOverlayProps) {
                   ? {}
                   : {
                       color: '#00a6f4',
+                      fontWeight: 700,
                     }
               }
             >
