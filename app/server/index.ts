@@ -34,7 +34,7 @@ const ioHandleOnConnection = (socket: Io.Socket) => {
 
   setTimeout(async () => {
     if (!getEchoScreenGlobal().roomIDService.isRoomIDTaken(roomId)) {
-      socket.emit('NOT_ALLOWED');
+      socket.emit('NOT_ALLOWED', null, []);
       setTimeout(() => {
         socket.disconnect();
       }, 1000);
