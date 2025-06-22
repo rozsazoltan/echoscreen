@@ -257,6 +257,7 @@ div.class-allow-device-to-connect-alert
 #settings-overlay-inner > div > div.bp3-tab-list {
   background-color: rgba(0, 0, 0, 0.1);
   padding: 8px;
+  border-radius: 0.4rem;
 }
 
 /* settings inner 100% height regardless tab content height */
