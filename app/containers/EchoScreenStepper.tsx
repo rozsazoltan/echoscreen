@@ -259,6 +259,38 @@ const EchoScreenStepper = React.forwardRef((_props, ref) => {
     pendingConnectionDevice,
   ]);
 
+  const renderTestStepButtons = useCallback(() => {
+    const isProd = process.env.NODE_ENV === 'production';
+    const isDevOrTest = process.env.RUN_MODE === 'dev' || process.env.RUN_MODE === 'test';
+
+    if (isProd && !isDevOrTest) {
+      return null;
+    }
+
+    return (
+      <div>
+        {activeStep > 0 && (
+          <Button
+            onClick={() => {
+              handleBack()
+            }}
+          >
+            Test: Handle Back
+          </Button>
+        )}
+        {activeStep < 3 && (
+          <Button
+            onClick={() => {
+              handleNext()
+            }}
+          >
+            Test: Handle Next
+          </Button>
+        )}
+      </div>
+    );
+  }, [activeStep]);
+
   const renderStepLabelContent = useCallback(
     (label, idx) => {
       return (
@@ -311,6 +343,7 @@ const EchoScreenStepper = React.forwardRef((_props, ref) => {
           </Stepper>
         </Col>
         <Col className={classes.stepContent} xs={12}>
+          {renderTestStepButtons()}
           {renderIntermediateOrSuccessStepContent()}
         </Col>
       </Row>
