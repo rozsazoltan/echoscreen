@@ -81,7 +81,7 @@ export default function IntermediateStep(props: IntermediateStepProps) {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        height: '160px',
+        height: '260px',
         width: '100%',
       }}
     >
