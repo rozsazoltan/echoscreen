@@ -35,3 +35,9 @@ jobs:
           git fetch origin
           git tag $VERSION
           git push origin $VERSION
+
+      - name: Call Release Workflow
+        uses: ./.github/workflows/create-release.yml
+        with:
+          tag: ${{ env.VERSION }}
+        secrets: inherit

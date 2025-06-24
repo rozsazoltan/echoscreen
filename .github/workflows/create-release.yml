@@ -1,9 +1,11 @@
 name: Release All OS - No Code Signing
 
 on:
-  push:
-    tags:
-      - 'v*'
+  workflow_call:
+    inputs:
+      tag:
+        required: true
+        type: string
 
 permissions:
   contents: write
@@ -16,17 +18,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Read version from tag
+      - name: Read version from input
         id: vars
-        run: echo "version=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+        run: echo "version=${{ inputs.tag }}" >> $GITHUB_OUTPUT
 
       - name: Extract changelog link
         id: changelog
         run: |
           VERSION=${{ steps.vars.outputs.version }}
-          # Replace "." with "" for anchor compatibility (GitHub uses lower-case with dots removed sometimes)
-          ANCHOR=$(echo "$VERSION" | sed 's/\.//g')
-          LINK="https://github.com/${{ github.repository }}/blob/${{ github.ref_name }}/CHANGELOG.md#v${VERSION}"
+          LINK="https://github.com/${{ github.repository }}/blob/${{ inputs.tag }}/CHANGELOG.md#v${VERSION}"
           echo "link=$LINK" >> $GITHUB_OUTPUT
 
       - name: Create GitHub Release
@@ -94,18 +94,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: yarn build
-
-      # Uncomment if needed
-      # - name: Lint / Type check / Test
-      #   run: |
-      #     yarn lint
-      #     yarn tsc
-      #     yarn test
-
-      # - name: UX Build & Test (optional)
-      #   uses: GabrielBB/xvfb-action@v1.2
-      #   with:
-      #     run: yarn test-ux
 
       - name: Package App
         env:
