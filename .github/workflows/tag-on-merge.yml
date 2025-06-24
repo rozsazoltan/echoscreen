@@ -13,16 +13,18 @@ jobs:
     if: |
       github.event.head_commit.message == 'chore: update CHANGELOG for ' || startsWith(github.event.head_commit.message, 'chore: prepare v')
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.extract_version.outputs.version }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Extract version from commit message
-        id: extract
+        id: extract_version
         run: |
           COMMIT_MSG="${{ github.event.head_commit.message }}"
           if [[ "$COMMIT_MSG" =~ chore:\ prepare\ v([0-9]+\.[0-9]+\.[0-9]+) ]]; then
-            echo "VERSION=v${BASH_REMATCH[1]}" >> $GITHUB_ENV
+            echo "version=v${BASH_REMATCH[1]}" >> $GITHUB_OUTPUT
           else
             echo "No valid prepare commit found."
             exit 1
@@ -33,11 +35,11 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git fetch origin
-          git tag $VERSION
-          git push origin $VERSION
+          git tag ${{ steps.extract_version.outputs.version }}
+          git push origin ${{ steps.extract_version.outputs.version }}
 
   call-create-release:
     needs: tag-on-merge
     uses: ./.github/workflows/create-release.yml
     with:
-      version: ${{ env.VERSION }}
+      version: ${{ needs.tag-on-merge.outputs.version }}
