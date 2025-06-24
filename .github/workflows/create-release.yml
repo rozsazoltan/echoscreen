@@ -16,15 +16,30 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Read version from tag
+        id: vars
+        run: echo "version=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+
+      - name: Extract changelog link
+        id: changelog
+        run: |
+          VERSION=${{ steps.vars.outputs.version }}
+          # Replace "." with "" for anchor compatibility (GitHub uses lower-case with dots removed sometimes)
+          ANCHOR=$(echo "$VERSION" | sed 's/\.//g')
+          LINK="https://github.com/${{ github.repository }}/blob/${{ github.ref_name }}/CHANGELOG.md#v${VERSION}"
+          echo "link=$LINK" >> $GITHUB_OUTPUT
+
       - name: Create GitHub Release
         uses: actions/create-release@v1.1.4
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref_name }}
-          release_name: ${{ github.ref_name }}
+          tag_name: ${{ steps.vars.outputs.version }}
+          release_name: ${{ steps.vars.outputs.version }}
           draft: true
           prerelease: false
+          body: |
+            See the changes in [CHANGELOG.md](${{ steps.changelog.outputs.link }}).
 
   release:
     name: EchoScreen Multi-Platform Build
