@@ -1,3 +1,8 @@
+# v3.3.3
+
+Changes are not detailed here. For more information, see: https://github.com/rozsazoltan/echoscreen/compare/v3.0.0...v3.3.3
+
+
 # v3.0.0 (February 2025)
 
 I am not committing to active maintenance. The project's structure is outdated. However, I am making some contributions that may improve the user experience.
