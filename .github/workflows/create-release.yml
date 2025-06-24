@@ -1,4 +1,4 @@
-name: Release All OS – No Code Signing
+name: Release All OS - No Code Signing
 
 on:
   push:
