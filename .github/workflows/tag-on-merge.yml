@@ -11,7 +11,7 @@ permissions:
 jobs:
   tag-on-merge:
     if: |
-      github.event.head_commit.message == 'chore: update CHANGELOG for ' || startsWith(github.event.head_commit.message, 'chore: prepare ')
+      github.event.head_commit.message == 'chore: update CHANGELOG for ' || startsWith(github.event.head_commit.message, 'chore: prepare v')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -36,7 +36,8 @@ jobs:
           git tag $VERSION
           git push origin $VERSION
 
-      - name: Call Release Workflow
-        uses: ./.github/workflows/create-release.yml
-        with:
-          tag: ${{ env.VERSION }}
+  call-create-release:
+    needs: tag-on-merge
+    uses: ./.github/workflows/create-release.yml
+    with:
+      version: ${{ env.VERSION }}
