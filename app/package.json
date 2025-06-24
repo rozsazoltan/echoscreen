@@ -1,7 +1,7 @@
 {
   "name": "echoscreen",
   "productName": "EchoScreen",
-  "version": "v3.3.4",
+  "version": "v3.3.5",
   "description": "EchoScreen turns any device into a secondary screen for your computer",
   "main": "./main.prod.js",
   "author": {
