@@ -1,0 +1,68 @@
+name: Prepare Release Branch
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version tag (e.g. v1.2.3)'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Git config
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
+      - name: Extract version without "v"
+        id: version
+        run: echo "STRIPPED_VERSION=${{ github.event.inputs.version }}" | sed 's/^v//' >> $GITHUB_ENV
+
+      - name: Create branch
+        run: |
+          git checkout -b prepare-${{ github.event.inputs.version }}
+
+      - name: Update version in package files
+        run: |
+          VERSION=$STRIPPED_VERSION
+          jq ".version = \"$VERSION\"" package.json > tmp && mv tmp package.json
+          jq ".version = \"$VERSION\"" app/package.json > tmp && mv tmp app/package.json
+          jq ".version = \"$VERSION\"" app/client/package.json > tmp && mv tmp app/client/package.json
+          jq ".version = \"$VERSION\"" app/package-lock.json > tmp && mv tmp app/package-lock.json
+
+          git add package.json app/package.json app/client/package.json app/package-lock.json
+          git commit -m "chore: bump version to $VERSION"
+
+      - name: Update CHANGELOG.md
+        run: |
+          VERSION=${{ github.event.inputs.version }}
+          LINK_START=$(grep -m1 "^# v" CHANGELOG.md | awk '{ print $2 }')
+          CHANGELOG_HEADER="# $VERSION\n\nChanges are not detailed here. For more information, see: https://github.com/${{ github.repository }}/compare/$LINK_START...$VERSION\n\n"
+          awk -v header="$CHANGELOG_HEADER" 'BEGIN {print header} {print}' CHANGELOG.md > tmp && mv tmp CHANGELOG.md
+          git add CHANGELOG.md
+          git commit -m "chore: update CHANGELOG for $VERSION"
+
+      - name: Push new branch
+        run: |
+          git push origin prepare-${{ github.event.inputs.version }}
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          title: chore: prepare ${{ github.event.inputs.version }}
+          branch: prepare-${{ github.event.inputs.version }}
+          base: master
+          body: |
+            Update required files for the ${{ github.event.inputs.version }} release.
+
+            Please review and edit the content of `CHANGELOG.md` if needed.
