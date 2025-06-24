@@ -59,7 +59,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
-          title: chore: prepare ${{ github.event.inputs.version }}
+          title: "chore: prepare ${{ github.event.inputs.version }}"
           branch: prepare-${{ github.event.inputs.version }}
           base: master
           body: |
