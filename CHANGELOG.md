@@ -1,6 +1,11 @@
 # v3.3.3
 
-Changes are not detailed here. For more information, see: https://github.com/rozsazoltan/echoscreen/compare/v3.0.0...v3.3.3
+* feat: add new version notification dialog on startup (removed from settings)
+* style: format settings panel menu
+* style: update link color
+* test: add prev/next buttons for development
+
+For more information, see: https://github.com/rozsazoltan/echoscreen/compare/v3.0.0...v3.3.3
 
 
 # v3.0.0 (February 2025)
@@ -21,6 +26,7 @@ I am not committing to active maintenance. The project's structure is outdated. 
 * Removed QR code – While useful, I rarely share the screen to a mobile device, so scanning the code is too much work in 99% of cases.
 
 To avoid any misunderstandings, I have placed links to my own name and repository starting from v3.0.0, but you can still navigate from the repository to the project's 2022 maintenance.
+
 
 # v2.0.4 (November 2022)
 
