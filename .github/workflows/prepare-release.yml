@@ -28,10 +28,6 @@ jobs:
         id: version
         run: echo "STRIPPED_VERSION=${{ github.event.inputs.version }}" | sed 's/^v//' >> $GITHUB_ENV
 
-      - name: Create branch
-        run: |
-          git checkout -b prepare-${{ github.event.inputs.version }}
-
       - name: Update version in package files
         run: |
           VERSION=$STRIPPED_VERSION
@@ -52,16 +48,13 @@ jobs:
           git add CHANGELOG.md
           git commit -m "chore: update CHANGELOG for $VERSION"
 
-      - name: Push new branch
-        run: |
-          git push origin prepare-${{ github.event.inputs.version }}
-
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
-          title: "chore: prepare ${{ github.event.inputs.version }}"
+          commit-message: "chore: prepare ${{ github.event.inputs.version }}"
           branch: prepare-${{ github.event.inputs.version }}
           base: master
+          title: "chore: prepare ${{ github.event.inputs.version }}"
           body: |
             Update required files for the ${{ github.event.inputs.version }} release.
 
