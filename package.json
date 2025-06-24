@@ -1,7 +1,7 @@
 {
   "name": "echoscreen",
   "productName": "EchoScreen",
-  "version": "3.3.1",
+  "version": "v3.3.3",
   "description": "EchoScreen turns any device into a secondary screen for your computer",
   "scripts": {
     "build": "yarn build-client && yarn build-main && yarn build-renderer",
