@@ -1,11 +1,11 @@
-# v3.3.3
+# v3.3.4
 
 * feat: add new version notification dialog on startup (removed from settings)
 * style: format settings panel menu
 * style: update link color
 * test: add prev/next buttons for development
 
-For more information, see: https://github.com/rozsazoltan/echoscreen/compare/v3.0.0...v3.3.3
+For more information, see: https://github.com/rozsazoltan/echoscreen/compare/v3.0.0...v3.3.4
 
 
 # v3.0.0 (February 2025)
