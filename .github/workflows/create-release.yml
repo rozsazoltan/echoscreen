@@ -1,40 +1,54 @@
+name: Release All OS - No Code Signing
+
 on:
   push:
-    # Sequence of patterns matched against refs/tags
     tags:
-      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+      - 'v*'
 
 permissions:
   contents: write
 
-name: release all os -- no code signing
-
 jobs:
   create-release:
-    # https://stackoverflow.com/questions/70959954/error-waiting-for-a-runner-to-pick-up-this-job-using-github-actions
+    name: Create GitHub Draft Release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
+
+      - name: Read version from tag
+        id: vars
+        run: echo "version=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+
+      - name: Extract changelog link
+        id: changelog
+        run: |
+          VERSION=${{ steps.vars.outputs.version }}
+          # Replace "." with "" for anchor compatibility (GitHub uses lower-case with dots removed sometimes)
+          ANCHOR=$(echo "$VERSION" | sed 's/\.//g')
+          LINK="https://github.com/${{ github.repository }}/blob/${{ github.ref_name }}/CHANGELOG.md#v${VERSION}"
+          echo "link=$LINK" >> $GITHUB_OUTPUT
+
+      - name: Create GitHub Release
+        uses: actions/create-release@v1.1.4
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}
-          release_name: ${{ github.ref }}
+          tag_name: ${{ steps.vars.outputs.version }}
+          release_name: ${{ steps.vars.outputs.version }}
           draft: true
           prerelease: false
+          body: |
+            See the changes in [CHANGELOG.md](${{ steps.changelog.outputs.link }}).
 
   release:
-    name: EchoScreen Release
+    name: EchoScreen Multi-Platform Build
     runs-on: ${{ matrix.os }}
+    needs: create-release
 
     strategy:
       matrix:
         include:
-          # https://stackoverflow.com/questions/70959954/error-waiting-for-a-runner-to-pick-up-this-job-using-github-actions
           - os: ubuntu-latest
             artifact_name: 'release/{*.AppImage,*.rpm,*.deb,*.yml}'
           - os: windows-2019
@@ -46,75 +60,59 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js environment
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '16'
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
 
-      - uses: actions/cache@v4
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+      - name: Cache yarn dependencies
+        uses: actions/cache@v4
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
           key: ${{ matrix.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ matrix.os }}-yarn-
 
-      - name: yarn install in ./app/client
+      - name: Install dependencies (app/client)
         run: |
           cd ./app/client
           yarn install --frozen-lockfile
 
-      - name: yarn install in ./
+      - name: Install dependencies (root)
         run: yarn install --frozen-lockfile
 
-      - name: yarn install in ./app
+      - name: Install dependencies (app)
         run: |
           cd ./app
           yarn install --frozen-lockfile
 
-      - name: yarn build
+      - name: Build project
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: yarn build
 
-      # - name: yarn lint
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   run: yarn lint
+      # Uncomment if needed
+      # - name: Lint / Type check / Test
+      #   run: |
+      #     yarn lint
+      #     yarn tsc
+      #     yarn test
 
-      # - name: yarn tsc
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   run: yarn tsc
-
-      # - name: yarn test
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   run: yarn test
-
-      # - name: yarn build-ux
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   run: yarn build-ux
-
-      # - name: yarn test-ux
+      # - name: UX Build & Test (optional)
       #   uses: GabrielBB/xvfb-action@v1.2
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       #   with:
       #     run: yarn test-ux
 
-      - name: yarn package-ci
+      - name: Package App
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: yarn package-ci
-      # TODO: add windows32 build step
 
-      - name: Upload binaries to release
+      - name: Upload binaries to GitHub Release
         uses: xresloader/upload-to-github-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
