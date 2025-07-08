@@ -69,5 +69,10 @@ yarn package-mac
 yarn package-linux
 ```
 
-## Source
-* [pavlobu/deskreen](https://github.com/pavlobu/deskreen)
+## Forked from Deskreen
+
+This project is a modified version of [Deskreen](https://github.com/pavlobu/deskreen),  
+originally created by [pavlobu](https://github.com/pavlobu).
+
+Deskreen is licensed under the [GNU Affero General Public License v3.0 (AGPL-3.0)](https://github.com/pavlobu/deskreen/blob/master/LICENSE).  
+AGPL-3.0 License © [Pavlo (Paul) Buidenkov](https://github.com/pavlobu/deskreen)
