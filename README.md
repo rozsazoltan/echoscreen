@@ -1,4 +1,4 @@
-The original creator of the project became inactive and abandoned the package. This fork was not intended for active development but fixes some annoying features and clarifies certain issues.
+The original creator of the project became inactive and abandoned the package. This fork was not intended for active development but fixes some annoying features and clarifies certain issues. See more [here](#forked-from-deskreen).
 
 The project is old and difficult to maintain.
 
