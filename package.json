@@ -70,8 +70,8 @@
   },
   "build": {
     "productName": "EchoScreen",
-    "appId": "com.rozsazoltan.echoscreen",
-    "copyright": "Copyright © 2025-present Rózsa Zoltán",
+    "appId": "org.rozsazoltan.echoscreen",
+    "copyright": "Copyright © 2020-present Pavlo Buidenkov (Paul)",
     "files": [
       "dist/",
       "node_modules/",
@@ -131,11 +131,16 @@
     "url": "git+https://github.com/rozsazoltan/echoscreen.git"
   },
   "author": {
-    "name": "Rózsa Zoltán",
-    "email": "rozsa.zoltan@c2.hu",
-    "url": "https://github.com/rozsazoltan"
+    "name": "Pavlo (Paul) Buidenkov",
+    "email": "pavlobu@gmail.com",
+    "url": "https://github.com/pavlobu"
   },
   "contributors": [
+    {
+      "name": "Pavlo (Paul) Buidenkov",
+      "email": "pavlobu@gmail.com",
+      "url": "https://github.com/pavlobu"
+    },
     {
       "name": "Rózsa Zoltán",
       "email": "rozsa.zoltan@c2.hu",
