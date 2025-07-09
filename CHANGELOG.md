@@ -31,3 +31,18 @@ To avoid any misunderstandings, I have placed links to my own name and repositor
 # v2.0.4 (November 2022)
 
 The last known release of the original project. It can start a screen-sharing session, which can then be accessed from another browser within the same network. The sharing is protected by a randomly generated PIN.
+
+## Forked from Deskreen
+
+> [!IMPORTANT]
+> EchoScreen is a forked version of Deskreen from 2025, created with minor modifications. **It was not made for profit or personal fame, but solely for implementing personal fixes for personal use.** The project was published only because of its open-source origins. Regardless, all my respect goes to [Deskreen](#forked-from-deskreen).
+
+This project is a modified version of [Deskreen](https://github.com/pavlobu/deskreen),  
+originally created by [pavlobu](https://github.com/pavlobu).
+
+Deskreen is licensed under the [GNU Affero General Public License v3.0 (AGPL-3.0)](https://github.com/pavlobu/deskreen/blob/master/LICENSE).  
+AGPL-3.0 License © [Pavlo (Paul) Buidenkov](https://github.com/pavlobu/deskreen)
+
+
+
+

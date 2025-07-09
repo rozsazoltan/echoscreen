@@ -1,8 +1,7 @@
-This [fork](#forked-from-deskreen) was not intended for active development but fixes some annoying features and clarifies certain issues. See more [here](#forked-from-deskreen).
-
-The project is old and difficult to maintain.
-
 <h1><img src="./resources/icons/icon_48x48.png" /> EchoScreen</h1>
+
+> [!IMPORTANT]
+> EchoScreen is a forked version of Deskreen from 2025, created with minor modifications. **It was not made for profit or personal fame, but solely for implementing personal fixes for personal use.** The project was published only because of its open-source origins. Regardless, all my respect goes to [Deskreen](#forked-from-deskreen).
 
 ## Whats changed
 ### v3.2.0

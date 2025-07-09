@@ -132,9 +132,15 @@ export default function SettingsOverlay(props: SettingsOverlayProps) {
             {`${t('Version')}: ${currentVersion}`}
           </Text>
         </Col>
-        <Col xs={12}>
+
+        <Col xs={12} style={{ marginTop: '20px' }}>
           <Text>
-            {`${t('Copyright')} © ${new Date().getFullYear()} `}
+            {`${t('EchoScreen is a forked version of Deskreen from 2025, created with minor modifications.')}`} <strong>{`${t('It was not made for profit or personal fame, but solely for implementing personal fixes for personal use.')}`}</strong> {`${t('The project was published only because of its open-source origins. Regardless, all my respect goes to Deskreen.')}`}
+          </Text>
+        </Col>
+        <Col xs={12} style={{ marginTop: '5px' }}>
+          <Text>
+            {`${t('Forked and modified')} © ${new Date().getFullYear()} `}
             <a
               onClick={() => {
                 shell.openExternal('https://linkedin.com/in/rozsazoltan');
@@ -152,12 +158,18 @@ export default function SettingsOverlay(props: SettingsOverlayProps) {
             </a>
           </Text>
         </Col>
-        <Col xs={12}>
+
+        <Col xs={12} style={{ marginTop: '20px' }}>
           <Text>
-            {`${t('Website')}: `}
+            {`${t('All my respect to Paul, the developer of the project called Deskreen!')}`}
+          </Text>
+        </Col>
+        <Col xs={12} style={{ marginTop: '5px' }}>
+          <Text>
+            {`${t('Copyright')} © ${new Date().getFullYear()} `}
             <a
               onClick={() => {
-                shell.openExternal('https://github.com/rozsazoltan/echoscreen');
+                shell.openExternal('https://linkedin.com/in/pavlobu');
               }}
               style={
                 isDarkTheme
@@ -168,9 +180,28 @@ export default function SettingsOverlay(props: SettingsOverlayProps) {
                     }
               }
             >
-              https://github.com/rozsazoltan/echoscreen
+              Pavlo Buidenkov (Paul)
             </a>
           </Text>
+          <Col xs={12} style={{ marginTop: '20px' }}>
+          <Text>
+            <a
+              onClick={() => {
+                shell.openExternal('https://deskreen.com');
+              }}
+              style={
+                isDarkTheme
+                  ? {}
+                  : {
+                      color: '#00a6f4',
+                      fontWeight: 700,
+                    }
+              }
+            >
+              {`${t('More information about Deskreen')}`}
+            </a>
+          </Text>
+        </Col>
         </Col>
       </div>
     </Row>
