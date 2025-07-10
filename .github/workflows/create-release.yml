@@ -30,12 +30,12 @@ jobs:
           echo "link=$LINK" >> $GITHUB_OUTPUT
 
       - name: Create GitHub Release
-        uses: actions/create-release@v1.1.4
+        uses: softprops/action-gh-release@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ steps.vars.outputs.version }}
-          release_name: ${{ steps.vars.outputs.version }}
+          name: ${{ steps.vars.outputs.version }}
           draft: true
           prerelease: false
           body: |
