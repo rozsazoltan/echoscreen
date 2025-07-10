@@ -29,17 +29,17 @@ jobs:
           LINK="https://github.com/${{ github.repository }}/blob/${{ inputs.version }}/CHANGELOG.md#v${VERSION}"
           echo "link=$LINK" >> $GITHUB_OUTPUT
 
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create GitHub Draft Release
+        uses: ncipollo/release-action@v1
         with:
-          tag_name: ${{ steps.vars.outputs.version }}
+          tag: ${{ steps.vars.outputs.version }}
           name: ${{ steps.vars.outputs.version }}
           draft: true
           prerelease: false
           body: |
-            See the changes in [CHANGELOG.md](${{ steps.changelog.outputs.link }}).
+            See the changes in [CHANGELOG.md](${{ steps.changelog.outputs.link }})
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   release:
     name: EchoScreen Multi-Platform Build
@@ -66,7 +66,6 @@ jobs:
               release/*.dmg
               release/*.blockmap
               release/*.yml
-
 
     steps:
       - name: Checkout code
@@ -117,10 +116,10 @@ jobs:
         run: yarn package-ci
 
       - name: Upload binaries to GitHub Release
-        uses: softprops/action-gh-release@v2
+        uses: ncipollo/release-action@v1
         with:
-          tag_name: ${{ steps.vars.outputs.version }}
+          tag: ${{ steps.vars.outputs.version }}
+          files: ${{ matrix.artifact_patterns }}
           draft: true
-          files: ${{ matrix.artifact_name }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
