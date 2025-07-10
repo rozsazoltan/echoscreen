@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   create-release:
-    name: Create GitHub Draft Release
+    name: Create GitHub Release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -36,7 +36,7 @@ jobs:
         with:
           tag_name: ${{ steps.vars.outputs.version }}
           name: ${{ steps.vars.outputs.version }}
-          draft: true
+          draft: false
           prerelease: false
           body: |
             See the changes in [CHANGELOG.md](${{ steps.changelog.outputs.link }}).
