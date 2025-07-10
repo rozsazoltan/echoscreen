@@ -1,36 +1,6 @@
-# v3.6.2
+# v3.7.0
 
-Changes are not detailed here. For more information, see: https://github.com/rozsazoltan/echoscreen/compare/v3.6.1...v3.6.2
-
-
-# v3.6.1
-
-Changes are not detailed here. For more information, see: https://github.com/rozsazoltan/echoscreen/compare/v3.6.0...v3.6.1
-
-
-# v3.6.0
-
-Changes are not detailed here. For more information, see: https://github.com/rozsazoltan/echoscreen/compare/v3.5.2...v3.6.0
-
-
-# v3.5.2
-
-Changes are not detailed here. For more information, see: https://github.com/rozsazoltan/echoscreen/compare/v3.5.1...v3.5.2
-
-
-# v3.5.1
-
-Changes are not detailed here. For more information, see: https://github.com/rozsazoltan/echoscreen/compare/v3.5.0...v3.5.1
-
-
-# v3.5.0
-
-Changes are not detailed here. For more information, see: https://github.com/rozsazoltan/echoscreen/compare/v3.4.1...v3.5.0
-
-
-# v3.4.1
-
-Changes are not detailed here. For more information, see: https://github.com/rozsazoltan/echoscreen/compare/v3.4.0...v3.4.1
+Changes are not detailed here. For more information, see: https://github.com/rozsazoltan/echoscreen/compare/v3.4.0...v3.7.0
 
 
 # v3.4.0
