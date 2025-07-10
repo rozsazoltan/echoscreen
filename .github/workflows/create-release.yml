@@ -14,8 +14,6 @@ jobs:
   create-release:
     name: Create GitHub Draft Release
     runs-on: ubuntu-latest
-    outputs:
-      release_id: ${{ steps.gh_release.outputs.id }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
