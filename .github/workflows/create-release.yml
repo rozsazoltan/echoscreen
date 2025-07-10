@@ -31,6 +31,8 @@ jobs:
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ steps.vars.outputs.version }}
           name: ${{ steps.vars.outputs.version }}
@@ -38,8 +40,6 @@ jobs:
           prerelease: false
           body: |
             See the changes in [CHANGELOG.md](${{ steps.changelog.outputs.link }}).
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   release:
     name: EchoScreen Multi-Platform Build
