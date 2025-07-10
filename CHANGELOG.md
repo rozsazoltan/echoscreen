@@ -1,3 +1,8 @@
+# v3.6.0
+
+Changes are not detailed here. For more information, see: https://github.com/rozsazoltan/echoscreen/compare/v3.5.2...v3.6.0
+
+
 # v3.5.2
 
 Changes are not detailed here. For more information, see: https://github.com/rozsazoltan/echoscreen/compare/v3.5.1...v3.5.2
