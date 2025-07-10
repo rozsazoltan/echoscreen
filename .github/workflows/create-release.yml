@@ -14,6 +14,8 @@ jobs:
   create-release:
     name: Create GitHub Draft Release
     runs-on: ubuntu-latest
+    outputs:
+      release_id: ${{ steps.gh_release.outputs.id }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -29,86 +31,14 @@ jobs:
           LINK="https://github.com/${{ github.repository }}/blob/${{ inputs.version }}/CHANGELOG.md#v${VERSION}"
           echo "link=$LINK" >> $GITHUB_OUTPUT
 
-      - name: Create GitHub Draft Release
-        uses: ncipollo/release-action@v1
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag: ${{ steps.vars.outputs.version }}
+          tag_name: ${{ steps.vars.outputs.version }}
           name: ${{ steps.vars.outputs.version }}
           draft: true
           prerelease: false
           body: |
-            See the changes in [CHANGELOG.md](${{ steps.changelog.outputs.link }})
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-  release:
-    name: EchoScreen Multi-Platform Build
-    runs-on: ${{ matrix.os }}
-    needs: create-release
-
-    strategy:
-      matrix:
-        include:
-          - os: ubuntu-latest
-            artifact_name: 'release/*.{AppImage,rpm,deb,yml}'
-          - os: windows-latest
-            artifact_name: 'release/*.{msi,exe,blockmap,yml}'
-          - os: macos-latest
-            artifact_name: 'release/*.{dmg,blockmap,yml}'
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '16'
-
-      - name: Get yarn cache directory path (cross-platform)
-        id: yarn-cache-dir-path
-        run: |
-          yarn_dir=$(yarn cache dir)
-          echo "dir=$yarn_dir" >> "$GITHUB_OUTPUT"
-        shell: bash
-
-      - name: Cache yarn dependencies
-        id: yarn-cache
-        uses: actions/cache@v4
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ matrix.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ matrix.os }}-yarn-
-
-      - name: Install dependencies (app/client)
-        run: |
-          cd ./app/client
-          yarn install --frozen-lockfile
-
-      - name: Install dependencies (root)
-        run: yarn install --frozen-lockfile
-
-      - name: Install dependencies (app)
-        run: |
-          cd ./app
-          yarn install --frozen-lockfile
-
-      - name: Build project
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: yarn build
-
-      - name: Package App
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: yarn package-ci
-
-      - name: Upload binaries to GitHub Release
-        uses: ncipollo/release-action@v1
-        with:
-          allowUpdates: true
-          tag: ${{ steps.vars.outputs.version }}
-          artifacts: ${{ matrix.artifact_name }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            See the changes in [CHANGELOG.md](${{ steps.changelog.outputs.link }}).
