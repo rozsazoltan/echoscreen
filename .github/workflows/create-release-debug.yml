@@ -1,4 +1,4 @@
-name: Release All OS - No Code Signing
+name: Release All OS - No Code Signing Debug
 
 on:
   workflow_dispatch:
@@ -29,18 +29,6 @@ jobs:
           VERSION=${{ steps.vars.outputs.version }}
           LINK="https://github.com/${{ github.repository }}/blob/${{ github.event.inputs.version }}/CHANGELOG.md#v${VERSION}"
           echo "link=$LINK" >> $GITHUB_OUTPUT
-
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ steps.vars.outputs.version }}
-          name: ${{ steps.vars.outputs.version }}
-          draft: true
-          prerelease: false
-          body: |
-            See the changes in [CHANGELOG.md](${{ steps.changelog.outputs.link }}).
 
   release:
     name: EchoScreen Multi-Platform Build
