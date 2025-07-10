@@ -30,16 +30,16 @@ jobs:
           echo "link=$LINK" >> $GITHUB_OUTPUT
 
       - name: Create GitHub Release
-        uses: actions/create-release@v1.1.4
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.vars.outputs.version }}
-          release_name: ${{ steps.vars.outputs.version }}
+          name: ${{ steps.vars.outputs.version }}
           draft: true
           prerelease: false
           body: |
             See the changes in [CHANGELOG.md](${{ steps.changelog.outputs.link }}).
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   release:
     name: EchoScreen Multi-Platform Build
