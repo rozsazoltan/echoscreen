@@ -1,4 +1,4 @@
-name: Release All OS - No Code Signing
+name: Create Release
 
 on:
   workflow_call:
