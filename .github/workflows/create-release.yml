@@ -81,6 +81,9 @@ jobs:
           restore-keys: |
             ${{ matrix.os }}-yarn-
 
+      - name: Debug yarn cache path
+        run: echo "Cache path: ${{ steps.yarn-cache-dir-path.outputs.dir }}"
+
       - name: Install dependencies (app/client)
         run: |
           cd ./app/client
