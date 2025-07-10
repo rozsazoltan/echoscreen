@@ -1,3 +1,8 @@
+# v3.4.1
+
+Changes are not detailed here. For more information, see: https://github.com/rozsazoltan/echoscreen/compare/v3.4.0...v3.4.1
+
+
 # v3.4.0
 
 * Clear attribution to Deskreen as the original project. EchoScreen is a fork of Deskreen and does not seek any financial or reputational gain from the project. To support the project, consider checking out the original.
