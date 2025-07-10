@@ -62,6 +62,11 @@ jobs:
         id: yarn-cache-dir-path
         run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
 
+      - name: Debug yarn cache path
+        run: |
+          echo "Cache path:"
+          echo "${{ steps.yarn-cache-dir-path.outputs.dir }}"
+
       - name: Cache yarn dependencies
         id: yarn-cache
         uses: actions/cache@v4
@@ -70,8 +75,3 @@ jobs:
           key: ${{ matrix.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ matrix.os }}-yarn-
-
-      - name: Debug yarn cache path
-        run: |
-          echo "Cache path:"
-          echo "${{ steps.yarn-cache-dir-path.outputs.dir }}"
