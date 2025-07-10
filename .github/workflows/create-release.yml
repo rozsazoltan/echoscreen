@@ -65,17 +65,24 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Get yarn cache directory path
+      - name: Get yarn cache directory path (cross-platform)
         id: yarn-cache-dir-path
-        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
+        run: |
+          yarn_dir=$(yarn cache dir)
+          echo "dir=$yarn_dir" >> "$GITHUB_OUTPUT"
+        shell: bash
 
       - name: Cache yarn dependencies
+        id: yarn-cache
         uses: actions/cache@v4
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
           key: ${{ matrix.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ matrix.os }}-yarn-
+
+      - name: Debug yarn cache path
+        run: echo "Cache path: ${{ steps.yarn-cache-dir-path.outputs.dir }}"
 
       - name: Install dependencies (app/client)
         run: |
