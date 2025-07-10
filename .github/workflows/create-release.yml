@@ -104,28 +104,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: yarn package-ci
 
-      - name: Collect artifact files list
-        id: collect_files
-        run: |
-          shopt -s nullglob
-          files=(${{ matrix.artifact_name }})
-          if [ ${#files[@]} -eq 0 ]; then
-            echo "No files found matching pattern '${{ matrix.artifact_name }}'"
-            echo "files="
-          else
-            echo "Found files:"
-            for f in "${files[@]}"; do
-              echo " - $f"
-            done
-            echo "files=${files[*]}" >> $GITHUB_OUTPUT
-          fi
-        shell: bash
-
       - name: Upload binaries to GitHub Release
         uses: ncipollo/release-action@v1
         with:
+          allowUpdates: true
           tag: ${{ steps.vars.outputs.version }}
-          files: ${{ steps.collect_files.outputs.files }}
-          draft: true
+          artifacts: ${{ matrix.artifact_name }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
