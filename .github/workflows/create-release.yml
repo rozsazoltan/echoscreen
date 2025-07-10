@@ -51,7 +51,7 @@ jobs:
         include:
           - os: ubuntu-latest
             artifact_name: 'release/{*.AppImage,*.rpm,*.deb,*.yml}'
-          - os: windows-2019
+          - os: windows-latest
             artifact_name: 'release/{*.msi,*.exe,*.blockmap,*.yml}'
           - os: macos-latest
             artifact_name: 'release/{*.dmg,*.blockmap,*.yml}'
