@@ -1,6 +1,6 @@
 {
   "name": "echoscreen-client-viewer",
-  "version": "v3.4.0",
+  "version": "v3.4.1",
   "private": true,
   "dependencies": {
     "@blueprintjs/core": "^3.35.0",
