@@ -15,11 +15,11 @@ jobs:
     strategy:
       include:
         - os: ubuntu-latest
-          artifact_patterns: release/*.AppImage,release/*.rpm,release/*.deb,release/*.yml
+          artifact_patterns: release/*.AppImage release/*.rpm release/*.deb release/*.yml
         - os: windows-latest
-          artifact_patterns: release/*.msi,release/*.exe,release/*.blockmap,release/*.yml
+          artifact_patterns: release/*.msi release/*.exe release/*.blockmap release/*.yml
         - os: macos-latest
-          artifact_patterns: release/*.dmg,release/*.blockmap,release/*.yml
+          artifact_patterns: release/*.dmg release/*.blockmap release/*.yml
 
     steps:
       - name: Checkout code
