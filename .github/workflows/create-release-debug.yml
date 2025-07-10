@@ -1,0 +1,83 @@
+name: Release All OS - No Code Signing
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version tag (e.g. v1.2.3)'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  create-release:
+    name: Create GitHub Draft Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Read version from input
+        id: vars
+        run: echo "version=${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
+
+      - name: Extract changelog link
+        id: changelog
+        run: |
+          VERSION=${{ steps.vars.outputs.version }}
+          LINK="https://github.com/${{ github.repository }}/blob/${{ github.event.inputs.version }}/CHANGELOG.md#v${VERSION}"
+          echo "link=$LINK" >> $GITHUB_OUTPUT
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.vars.outputs.version }}
+          name: ${{ steps.vars.outputs.version }}
+          draft: true
+          prerelease: false
+          body: |
+            See the changes in [CHANGELOG.md](${{ steps.changelog.outputs.link }}).
+
+  release:
+    name: EchoScreen Multi-Platform Build
+    runs-on: ${{ matrix.os }}
+    needs: create-release
+
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            artifact_name: 'release/{*.AppImage,*.rpm,*.deb,*.yml}'
+          - os: windows-latest
+            artifact_name: 'release/{*.msi,*.exe,*.blockmap,*.yml}'
+          - os: macos-latest
+            artifact_name: 'release/{*.dmg,*.blockmap,*.yml}'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '16'
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
+
+      - name: Cache yarn dependencies
+        id: yarn-cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ matrix.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ matrix.os }}-yarn-
+
+      - name: Debug yarn cache path
+        run: echo "Cache path: ${{ steps.yarn-cache-dir-path.outputs.dir }}"
