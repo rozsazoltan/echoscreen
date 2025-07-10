@@ -1,3 +1,8 @@
+# v3.4.0
+
+Changes are not detailed here. For more information, see: https://github.com/rozsazoltan/echoscreen/compare/v3.3.5...v3.4.0
+
+
 # v3.3.5
 
 * feat: add new version notification dialog on startup (removed from settings)
