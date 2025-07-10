@@ -108,10 +108,10 @@ jobs:
         run: yarn package-ci
 
       - name: Upload binaries to GitHub Release
-        uses: xresloader/upload-to-github-release@v1
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.vars.outputs.version }}
+          draft: true
+          files: ${{ matrix.artifact_name }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          file: ${{ matrix.artifact_name }}
-          tags: true
-          draft: true
