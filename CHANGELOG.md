@@ -1,3 +1,10 @@
+# v3.4.0
+
+* Clear attribution to Deskreen as the original project. EchoScreen is a fork of Deskreen and does not seek any financial or reputational gain from the project. To support the project, consider checking out the original.
+
+For more information, see: https://github.com/rozsazoltan/echoscreen/compare/v3.3.5...v3.4.0
+
+
 # v3.3.5
 
 * feat: add new version notification dialog on startup (removed from settings)
