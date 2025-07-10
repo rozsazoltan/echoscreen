@@ -50,22 +50,11 @@ jobs:
       matrix:
         include:
           - os: ubuntu-latest
-            artifact_patterns: |
-              release/*.AppImage
-              release/*.rpm
-              release/*.deb
-              release/*.yml
+            artifact_name: 'release/*.{AppImage,rpm,deb,yml}'
           - os: windows-latest
-            artifact_patterns: |
-              release/*.msi
-              release/*.exe
-              release/*.blockmap
-              release/*.yml
+            artifact_name: 'release/*.{msi,exe,blockmap,yml}'
           - os: macos-latest
-            artifact_patterns: |
-              release/*.dmg
-              release/*.blockmap
-              release/*.yml
+            artifact_name: 'release/*.{dmg,blockmap,yml}'
 
     steps:
       - name: Checkout code
@@ -115,11 +104,28 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: yarn package-ci
 
+      - name: Collect artifact files list
+        id: collect_files
+        run: |
+          shopt -s nullglob
+          files=(${{ matrix.artifact_name }})
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "No files found matching pattern '${{ matrix.artifact_name }}'"
+            echo "files="
+          else
+            echo "Found files:"
+            for f in "${files[@]}"; do
+              echo " - $f"
+            done
+            echo "files=${files[*]}" >> $GITHUB_OUTPUT
+          fi
+        shell: bash
+
       - name: Upload binaries to GitHub Release
         uses: ncipollo/release-action@v1
         with:
           tag: ${{ steps.vars.outputs.version }}
-          files: ${{ matrix.artifact_patterns }}
+          files: ${{ steps.collect_files.outputs.files }}
           draft: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
