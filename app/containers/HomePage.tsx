@@ -9,6 +9,7 @@ import { Row, Grid } from 'react-flexbox-grid';
 import { ToastProvider, DefaultToast } from 'react-toast-notifications';
 import { useTranslation } from 'react-i18next';
 import useAppVersions from '../hooks/useAppVersions';
+import { compare } from 'compare-versions';
 
 import TopPanel from '../components/TopPanel';
 import { LIGHT_UI_BACKGROUND } from './SettingsProvider';
@@ -45,7 +46,7 @@ export default function HomePage() {
   const shouldShowUpdate =
     latestVersion !== '' &&
     currentVersion !== '' &&
-    latestVersion !== currentVersion &&
+    compare(latestVersion, currentVersion, '>') &&
     showUpdateMessage;
 
   return (
