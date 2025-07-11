@@ -14,13 +14,13 @@ jobs:
       github.event.head_commit.message == 'chore: update CHANGELOG for ' || startsWith(github.event.head_commit.message, 'chore: prepare v')
     runs-on: ubuntu-latest
     outputs:
-      version: ${{ steps.extract_version.outputs.version }}
+      version: ${{ steps.extract-version.outputs.version }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Extract version from commit message
-        id: extract_version
+        id: extract-version
         run: |
           COMMIT_MSG="${{ github.event.head_commit.message }}"
           if [[ "$COMMIT_MSG" =~ chore:\ prepare\ v([0-9]+\.[0-9]+\.[0-9]+) ]]; then
@@ -35,10 +35,10 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git fetch origin
-          git tag ${{ steps.extract_version.outputs.version }}
-          git push origin ${{ steps.extract_version.outputs.version }}
+          git tag ${{ steps.extract-version.outputs.version }}
+          git push origin ${{ steps.extract-version.outputs.version }}
 
-  call-create-release:
+  create-release:
     needs: tag-on-merge
     uses: ./.github/workflows/create-release.yml
     with:
