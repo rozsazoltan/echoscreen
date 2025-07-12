@@ -54,12 +54,17 @@ The last known release of the original project. It can start a screen-sharing se
 > [!IMPORTANT]
 > EchoScreen is a forked version of Deskreen from 2025, created with minor modifications. **It was not made for profit or personal fame, but solely for implementing personal fixes for personal use.** The project was published only because of its open-source origins. Regardless, all my respect goes to [Deskreen](#forked-from-deskreen).
 
-This project is a modified version of [Deskreen](https://github.com/pavlobu/deskreen),  
-originally created by [pavlobu](https://github.com/pavlobu).
+This project is a modified version of [Deskreen](https://github.com/pavlobu/deskreen), originally created by [pavlobu](https://github.com/pavlobu).
 
 Deskreen is licensed under the [GNU Affero General Public License v3.0 (AGPL-3.0)](https://github.com/pavlobu/deskreen/blob/master/LICENSE).  
 AGPL-3.0 License © [Pavlo (Paul) Buidenkov](https://github.com/pavlobu/deskreen)
 
+## License
 
+This project is a fork of [Deskreen](https://github.com/pavlobu/deskreen),
+originally created and licensed by [Pavlo (Paul) Buidenkov](https://github.com/pavlobu) under the [GNU Affero General Public License v3.0 (AGPL-3.0)](https://www.gnu.org/licenses/agpl-3.0.html).
 
+Modifications © 2025–present [Zoltán Rózsa](https://github.com/rozsazoltan)
 
+This modified version is also licensed under the AGPL-3.0.  
+For full license terms, see the [LICENSE](./LICENSE) file.
