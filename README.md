@@ -98,23 +98,33 @@ This project is a modified version of [Deskreen](https://github.com/pavlobu/desk
 Deskreen is licensed under the [GNU Affero General Public License v3.0 (AGPL-3.0)](https://github.com/pavlobu/deskreen/blob/master/LICENSE).  
 AGPL-3.0 License © [Pavlo (Paul) Buidenkov](https://github.com/pavlobu/deskreen)
 
+## License
+
+This project is a fork of [Deskreen](https://github.com/pavlobu/deskreen),
+originally created and licensed by [Pavlo (Paul) Buidenkov](https://github.com/pavlobu) under the [GNU Affero General Public License v3.0 (AGPL-3.0)](https://www.gnu.org/licenses/agpl-3.0.html).
+
+Modifications © 2025–present [Zoltán Rózsa](https://github.com/rozsazoltan)
+
+This modified version is also licensed under the AGPL-3.0.  
+For full license terms, see the [LICENSE](./LICENSE) file.
+
 ## Copyright
 
 **AGPL-3.0 License © [Pavlo (Paul) Buidenkov](https://github.com/pavlobu/deskreen)**<br>
 Apache 2.0 © [blueprintjs](https://github.com/palantir/blueprint)<br>
 MIT © [Electron React Boilerplate](https://github.com/electron-react-boilerplate)<br>
 simple-peer MIT. Copyright (c) [Feross Aboukhadijeh](http://feross.org/)<br>
-GNU General Public License (GPL) Version 2 [node-forge](https://github.com/digitalbazaar/forge)<br>
+GNU General Public License (GPL) Version 2 © [node-forge](https://github.com/digitalbazaar/forge)<br>
 ISC Copyright (c) 2019, Mapbox [pixelmatch](https://github.com/mapbox/pixelmatch)
 
 ## Thanks
 
 We express our sincere gratitude to [Pavlo (Paul) Buidenkov](https://github.com/pavlobu) for originally creating [Deskreen](https://github.com/pavlobu/deskreen) and for his long-term, selfless dedication to maintaining it. His work laid the foundation for everything that followed, and we hold his contribution in the highest regard.
 
-We also thank the [Electron React Boilerplate community](https://github.com/electron-react-boilerplate/electron-react-boilerplate) community for providing a well-structured starter template that greatly accelerated the early stages of Deskreen's development.
+We also thank the [Electron React Boilerplate community](https://github.com/electron-react-boilerplate/electron-react-boilerplate) for providing a well-structured starter template that greatly accelerated the early stages of Deskreen's development.
 
 Appreciation goes to [GitHub Actions](https://github.com/features/actions) for enabling a dependable continuous integration system, which has been essential throughout the development process.
 
 Finally, a heartfelt thank you to the broader [open-source](https://github.com/open-source) community and to the maintainers of the libraries used in this project. Your ongoing efforts make projects like this possible.
 
-**Motivation: Because _together_, nothing is impossible.**
+**Motivation:** Because _together_, nothing is impossible.
