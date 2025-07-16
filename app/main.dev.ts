@@ -11,7 +11,7 @@
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 import path from 'path';
-import { app, BrowserWindow, shell } from 'electron';
+import { app, BrowserWindow, shell, Notification } from 'electron';
 import store from './echoscreen-electron-store';
 import i18n from './configs/i18next.config';
 import signalingServer from './server';
@@ -23,15 +23,13 @@ import getNewVersionTag from './utils/getNewVersionTag';
 import initIpcMainHandlers from './main/ipcMainHandlers';
 import { ElectronStoreKeys } from './enums/ElectronStoreKeys.enum';
 import getEchoScreenGlobal from './utils/mainProcessHelpers/getEchoScreenGlobal';
+import { compare } from 'compare-versions';
 
 export default class EchoScreenApp {
   mainWindow: BrowserWindow | null = null;
-
   menuBuilder: MenuBuilder | null = null;
 
-  latestAppVersion = '';
-
-  initElectronAppObject() {
+  async initElectronAppObject() {
     /**
      * Add event listeners...
      */
@@ -46,40 +44,11 @@ export default class EchoScreenApp {
     });
 
     if (process.env.E2E_BUILD === 'true') {
-      // eslint-disable-next-line promise/catch-or-return
-      app.whenReady().then(this.createWindow);
+      app.whenReady().then(this.createWindow.bind(this));
     } else {
       app.on('ready', async () => {
-        this.createWindow();
-
-        const { Notification } = require('electron');
-
-        const latestAppVersion = await getNewVersionTag();
-
-        const showNotification = () => {
-          const notification = {
-            title: i18n.t('EchoScreen Update is Available!'),
-            body: `${i18n.t('Your current version is')} ${
-              getEchoScreenGlobal().currentAppVersion
-            } | ${i18n.t(
-              'Click to download new updated version'
-            )} ${latestAppVersion}`,
-          };
-          const notificationInstance = new Notification(notification);
-          notificationInstance.show();
-          notificationInstance.on('click', (event) => {
-            event.preventDefault(); // prevent the browser from focusing the Notification's tab
-            shell.openExternal('https://github.com/rozsazoltan/echoscreen');
-          });
-        };
-
-        if (
-          latestAppVersion !== '' &&
-          latestAppVersion !== getEchoScreenGlobal().currentAppVersion
-        ) {
-          getEchoScreenGlobal().latestAppVersion = latestAppVersion;
-          showNotification();
-        }
+        await this.createWindow();
+        await this.checkAndNotifyUpdate();
       });
     }
 
@@ -178,7 +147,7 @@ export default class EchoScreenApp {
       if (this.mainWindow === null) return;
       this.menuBuilder = new MenuBuilder(this.mainWindow, i18n);
       this.menuBuilder.buildMenu();
-      setTimeout(async () => {
+      setTimeout(() => {
         if (lng !== 'en' && i18n.language !== lng) {
           i18n.changeLanguage(lng);
           if (store.has(ElectronStoreKeys.AppLanguage)) {
@@ -188,6 +157,33 @@ export default class EchoScreenApp {
         }
       }, 400);
     });
+  }
+
+  async checkAndNotifyUpdate() {
+    const latestAppVersion = await getNewVersionTag();
+    const currentAppVersion = getEchoScreenGlobal().currentAppVersion;
+
+    if (
+      latestAppVersion &&
+      currentAppVersion &&
+      compare(latestAppVersion, currentAppVersion, '>')
+    ) {
+      getEchoScreenGlobal().latestAppVersion = latestAppVersion;
+
+      const notification = new Notification({
+        title: i18n.t('EchoScreen Update is Available!'),
+        body: `${i18n.t('Your current version is')} ${currentAppVersion} | ${i18n.t(
+          'Click to download new updated version'
+        )} ${latestAppVersion}`,
+      });
+
+      notification.show();
+
+      notification.on('click', (event) => {
+        event.preventDefault?.();
+        shell.openExternal('https://github.com/rozsazoltan/echoscreen/releases/latest');
+      });
+    }
   }
 
   start() {
