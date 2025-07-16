@@ -27,6 +27,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "compare-versions": "^6.1.1",
     "sass": "^1.30.0",
     "socket.io": "^2.3.0"
   }
