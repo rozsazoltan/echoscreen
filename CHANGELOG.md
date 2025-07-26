@@ -1,6 +1,8 @@
 # v3.7.3
 
-Changes are not detailed here. For more information, see: https://github.com/rozsazoltan/echoscreen/compare/v3.7.2...v3.7.3
+* fix: show update notification only if necessary
+
+For more information, see: https://github.com/rozsazoltan/echoscreen/compare/v3.7.2...v3.7.3
 
 
 # v3.7.2
